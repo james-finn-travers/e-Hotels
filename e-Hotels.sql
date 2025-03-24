@@ -28,6 +28,7 @@ CREATE TABLE ChainEmail (
 CREATE TABLE Hotel (
     HotelAddr varchar(20) PRIMARY KEY, 
     NumRooms int, 
+    City varchar(20),
     StarRating int CHECK (StarRating<= 5 AND StarRating>=0), 
     HotelChainID int NOT NULL REFERENCES HotelChain(ID)
 );
