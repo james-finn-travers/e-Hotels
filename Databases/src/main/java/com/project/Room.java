@@ -71,13 +71,24 @@ public class Room {
     }
 
     public String toString() {
-        return "<ul>"
-                + "<li>" + hotelAddr + "</li>"
-                + "<li>" + roomNum + "</li>"
-                + "<li>" + price + "</li>"
-                + "<li>" + cap + "</li>"
-                + "<li>" + view + "</li>"
-                + "<li>" + extendable + "</li>"
-                + "</ul>";
+        return "<tr>"
+                + "<td>" + hotelAddr + "</td>"
+                + "<td>" + roomNum + "</td>"
+                + "<td>" + price + "</td>"
+                + "<td>" + cap + "</td>"
+                + "<td>" + view + "</td>"
+                + "<td>" + extendable + "</td>"
+                + "<td>"
+                + "<form method='post' action='bookRoom.jsp'>"
+                + "<input type='hidden' name='hotelAddr' value='" + hotelAddr + "'>"
+                + "<input type='hidden' name='roomNum' value='" + roomNum + "'>"
+                + "<input type='hidden' name='price' value='" + price + "'>"
+                + "<input type='hidden' name='cap' value='" + cap + "'>"
+                + "<input type='hidden' name='view' value='" + view + "'>"
+                + "<input type='hidden' name='extendable' value='" + extendable + "'>"
+                + "<button type='submit'>Book</button>"
+                + "</form>"
+                + "</td>"
+                + "</tr>";
     }
 }

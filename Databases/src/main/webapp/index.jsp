@@ -96,9 +96,23 @@
         <p><strong>Total Number of Rooms:</strong> <%= totalRooms %></p>
     <% Query q = new Query();
         List<Room> rs = q.searchAvailableRooms(startDateStr, endDateStr, selectedNumber, enteredText, dollarAmount, capacity, totalRooms);
-                for (Room room : rs) { %>
-                    <%= room.toString() %>
-
+                if (!rs.isEmpty()) { %>
+                    <h2>Available Rooms:</h2>
+                    <table border="1">
+                        <tr>
+                            <th>Hotel Address</th>
+                            <th>Room Number</th>
+                            <th>Price</th>
+                            <th>Capacity</th>
+                            <th>View</th>
+                            <th>Extendable</th>
+                        </tr>
+                        <% for (Room room : rs) { %>
+                            <%= room.toString() %>
+                        <% } %>
+                    </table>
+                <% } else { %>
+                    <p>No available rooms found.</p>
                 <% }
         } %>
 
