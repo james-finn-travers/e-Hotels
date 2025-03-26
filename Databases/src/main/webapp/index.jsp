@@ -1,3 +1,7 @@
+<%@ page import="com.project.Query" %>
+<%@ page import="com.project.Room" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -90,7 +94,13 @@
         <p><strong>Dollar Amount:</strong> $<%= dollarAmount %></p>
         <p><strong>Capacity:</strong> <%= capacity %></p>
         <p><strong>Total Number of Rooms:</strong> <%= totalRooms %></p>
-    <% } %>
+    <% Query q = new Query();
+        List<Room> rs = q.searchAvailableRooms(startDateStr, endDateStr, selectedNumber, enteredText, dollarAmount, capacity, totalRooms);
+                for (Room room : rs) { %>
+                    <%= room.toString() %>
+
+                <% }
+        } %>
 
 <% } %>
 

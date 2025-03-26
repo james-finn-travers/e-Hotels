@@ -69,4 +69,15 @@ public class Room {
     public void setExtendable(boolean extendable) {
         this.extendable = extendable;
     }
+
+    public String toString() {
+        return "<ul>"
+                + "<li>" + hotelAddr + "</li>"
+                + "<li>" + roomNum + "</li>"
+                + "<li>" + price + "</li>"
+                + "<li>" + cap + "</li>"
+                + "<li>" + view + "</li>"
+                + "<li>" + extendable + "</li>"
+                + "</ul>";
+    }
 }
