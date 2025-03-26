@@ -21,11 +21,11 @@ INSERT INTO ChainEmail (HotelChainID, EmailAddr) VALUES
 (2, 'info@chain.com'),
 (3, 'support@chain.com');
 
-INSERT INTO Hotel (HotelAddr, NumRooms, StarRating, HotelChainID) VALUES 
-('101 Beach Blvd', 100, 4, 1),
-('202 Mountain Rd', 150, 5, 1),
-('303 City St', 80, 3, 2),
-('404 Desert Dr', 50, 2, 3);
+INSERT INTO Hotel (HotelAddr, NumRooms, StarRating, HotelChainID, City) VALUES 
+('101 Beach Blvd', 100, 4, 1, 'Ottawa'),
+('202 Mountain Rd', 150, 5, 1,'Hull'),
+('303 City St', 80, 3, 2,'Ottawa'),
+('404 Desert Dr', 50, 2, 3,'Kanata');
 
 INSERT INTO HotelPhone (HotelAddr, PhoneNum) VALUES 
 ('101 Beach Blvd', 1234567891),
