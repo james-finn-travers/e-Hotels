@@ -4,6 +4,9 @@ import java.sql.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 
 public class Query {
 
@@ -57,14 +60,54 @@ public class Query {
 
     }
 
+        public static long calculateDateDifference(String startDateStr, String endDateStr) {
+            // Convert Strings to LocalDate
+            LocalDate startDate = LocalDate.parse(startDateStr);
+            LocalDate endDate = LocalDate.parse(endDateStr);
+
+            // Calculate the difference
+            long years = ChronoUnit.YEARS.between(startDate, endDate);
+            long months = ChronoUnit.MONTHS.between(startDate, endDate) % 12;
+            long days = ChronoUnit.DAYS.between(startDate.plusYears(years).plusMonths(months), endDate); // Exact days left
+
+            // Return formatted difference
+            if (days==0) {
+                days = 1;
+            }
+            return Math.abs(days);
+        }
+
+    public boolean createBooking(String hotelAddress, String roomNumber, String checkIn, String custID, String checkOut) {
+        String duration = Long.toString(calculateDateDifference(checkIn,checkOut));
+        String sql = "INSERT INTO Booking \n" +
+                "VALUES ('"+hotelAddress+"', "+roomNumber+",'"+checkIn+"','"+custID+"','"+checkOut+"',"+duration+"); \n";
+        ConnectionDB con = new ConnectionDB();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            st.executeUpdate(sql);
+
+            st.close();
+            con.close();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
     public static void main(String[] args){
-        /*Query q = new Query();
-        List<Room> rs = q.searchAvailableRooms("'2025-03-29'", "'2025-03-30'", 1, "'Ottawa'", 1, 1, 1);
+        Query q = new Query();
+        /*List<Room> rs = q.searchAvailableRooms("'2025-03-29'", "'2025-03-30'", 1, "'Ottawa'", 1, 1, 1);
         for (Room room : rs) {
             System.out.println(room.getRoomNum());
             System.out.println(room.getHotelAddr());
 
         }*/
+        //q.createBooking("303 City St", "301", "2025-03-01", "C001","2025-03-02");
     }
 
 }

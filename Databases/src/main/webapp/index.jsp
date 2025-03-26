@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Date Picker</title>
+    <title>Search Rooms</title>
 </head>
 <body>
     <form method="post">
@@ -108,7 +108,7 @@
                             <th>Extendable</th>
                         </tr>
                         <% for (Room room : rs) { %>
-                            <%= room.toString() %>
+                            <%= room.toString(startDateStr, endDateStr) %>
                         <% } %>
                     </table>
                 <% } else { %>
