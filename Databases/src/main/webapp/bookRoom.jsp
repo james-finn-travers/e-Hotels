@@ -31,26 +31,35 @@
         <p><strong>Check In Date:</strong> <%= checkIn %></p>
         <p><strong>Check Out Date:</strong> <%= checkOut %></p>
          <form method="post">
-                 <label for="custID">Customer ID:</label>
-                 <input type="text" id="custID" name="custID">
+             <label for="custID">Customer ID:</label>
+             <input type="text" id="custID" name="custID">
+             <br><br>
 
-                 <br><br>
-                 <input type='hidden' name='hotelAddr' value='hotelAddr'>
-                 <input type='hidden' name='roomNum' value='roomNum'>
-                 <input type='hidden' name='price' value='price'>
-                 <input type='hidden' name='cap' value='cap'>
-                 <input type='hidden' name='view' value='view'>
-                 <input type='hidden' name='extendable' value='extendable'>
-                 <input type='hidden' name='checkIn' value='checkIn'>
-                 <input type='hidden' name='checkOut' value='checkOut'>
+             <input type='hidden' name='hotelAddr' value='<%= hotelAddr %>'>
+             <input type='hidden' name='roomNum' value='<%= roomNum %>'>
+             <input type='hidden' name='price' value='<%= price %>'>
+             <input type='hidden' name='cap' value='<%= cap %>'>
+             <input type='hidden' name='view' value='<%= view %>'>
+             <input type='hidden' name='extendable' value='<%= extendable %>'>
+             <input type='hidden' name='checkIn' value='<%= checkIn %>'>
+             <input type='hidden' name='checkOut' value='<%= checkOut %>'>
 
-                 <button type="submit" name="submit">Submit</button>
-             </form>
-         <% if (request.getMethod().equalsIgnoreCase("post") && request.getParameter("submit") != null) {
+             <button type="submit" name="submit">Submit</button>
+         </form>
+
+         <% if (request.getMethod().equalsIgnoreCase("post") && request.getParameter("submit") != null && request.getParameter("custID")!=null) {
                 String custID = request.getParameter("custID");
                 boolean isValid = true;
                 Query q = new Query();
+         %>
+                <p>Hotel Address: <%= hotelAddr %></p>
+                <p>Room Number: <%= roomNum %></p>
+                <p>Check-In Date: <%= checkIn %></p>
+                <p>Customer ID: <%= custID %></p>
+                <p>Check-Out Date: <%= checkOut %></p>
+         <%
                 boolean flag = q.createBooking(hotelAddr,roomNum,checkIn, custID,checkOut);
+
                 if (flag) {
                     %>
                     <p>Your booking request has been received! We will process it shortly.</p>
