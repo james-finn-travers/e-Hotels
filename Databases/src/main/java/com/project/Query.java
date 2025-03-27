@@ -99,6 +99,32 @@ public class Query {
         }
     }
 
+    public static boolean empExists(String SIN){
+        String sql = "SElECT SINOrSSN FROM Employee \n" +
+                "WHERE SINOrSSN = '"+SIN+"'; \n";
+        ConnectionDB con = new ConnectionDB();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+
+            ResultSet rs = st.executeQuery(sql);
+
+            ResultSetMetaData rsm = rs.getMetaData();
+
+            int colCount = rsm.getColumnCount();
+
+            st.close();
+            con.close();
+            return colCount==1;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
     public static void main(String[] args){
         Query q = new Query();
         /*List<Room> rs = q.searchAvailableRooms("'2025-03-29'", "'2025-03-30'", 1, "'Ottawa'", 1, 1, 1);
