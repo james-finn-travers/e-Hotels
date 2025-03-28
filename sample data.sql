@@ -193,16 +193,36 @@ INSERT INTO Employee (SINOrSSN, FirstName, MiddleName, LastName, Address, Role, 
 (935467890, 'Jill', 'V', 'Pink', '500 Yonge St', 'Receptionist', '500 Yonge St'),
 (946578901, 'Jim', 'W', 'Brown', '500 Yonge St', 'Housekeeping', '500 Yonge St'),
 (957689012, 'Jenny', 'X', 'Green', '500 Yonge St', 'Maintenance', '500 Yonge St'),
-(968790123, 'Jack', 'Y', 'Black', '500 Yonge St', 'Security', '500 Yonge St');
+(968790123, 'Jack', 'Y', 'Black', '500 Yonge St', 'Security', '500 Yonge St'),
+(100001001, 'Paul', 'A', 'Walker', '600 Bay St', 'Manager', '600 Bay St'),
+(100001002, 'Linda', 'B', 'Davis', '600 Bay St', 'Receptionist', '600 Bay St'),
+(100001003, 'Mark', 'C', 'Lewis', '600 Bay St', 'Housekeeping', '600 Bay St'),
+(100001004, 'Nancy', 'D', 'Evans', '600 Bay St', 'Maintenance', '600 Bay St'),
+(100001005, 'Steve', 'E', 'Clark', '600 Bay St', 'Security', '600 Bay St'),
+(100002001, 'Tom', 'F', 'Harris', '700 King St', 'Manager', '700 King St'),
+(100002002, 'Emma', 'G', 'Robinson', '700 King St', 'Receptionist', '700 King St'),
+(100002003, 'Lucas', 'H', 'White', '700 King St', 'Housekeeping', '700 King St'),
+(100002004, 'Sophia', 'I', 'Moore', '700 King St', 'Maintenance', '700 King St'),
+(100002005, 'Daniel', 'J', 'Hall', '700 King St', 'Security', '700 King St').
+(100003001, 'Ryan', 'K', 'Adams', '800 Queen St', 'Manager', '800 Queen St'),
+(100003002, 'Olivia', 'L', 'Carter', '800 Queen St', 'Receptionist', '800 Queen St'),
+(100003003, 'Ethan', 'M', 'Perez', '800 Queen St', 'Housekeeping', '800 Queen St'),
+(100003004, 'Mia', 'N', 'Nelson', '800 Queen St', 'Maintenance', '800 Queen St'),
+(100003005, 'Noah', 'O', 'Mitchell', '800 Queen St', 'Security', '800 Queen St');
+
 
 INSERT INTO Manages (SINOrSSN, HotelAddr) VALUES 
 (123456789, '101 Beach Blvd'),
+(678901234, '100 Grove Rd'),
 (234567890, '202 Mountain Rd'),
 (345678901, '303 City St'),
 (456789012, '404 Desert Dr'),
 (567890123, '505 Forest Ave'),
-(678901234, '100 Grove Rd'),
-(967890123, '500 Yonge St');
+(924356789, '500 Yonge St'),
+(100001001, '600 Bay St'),
+(100002001, '700 King St'),
+(100003001, '800 Queen St');
+
 
 INSERT INTO Customer (ID, FirstName, MiddleName, LastName, Address, IDType, Date_Reg) VALUES 
 ('C001', 'Alice', 'X', 'Johnson', '123 Elm St', 'Passport', '2025-01-01'),
