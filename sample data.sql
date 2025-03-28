@@ -203,7 +203,7 @@ INSERT INTO Employee (SINOrSSN, FirstName, MiddleName, LastName, Address, Role, 
 (100002002, 'Emma', 'G', 'Robinson', '700 King St', 'Receptionist', '700 King St'),
 (100002003, 'Lucas', 'H', 'White', '700 King St', 'Housekeeping', '700 King St'),
 (100002004, 'Sophia', 'I', 'Moore', '700 King St', 'Maintenance', '700 King St'),
-(100002005, 'Daniel', 'J', 'Hall', '700 King St', 'Security', '700 King St').
+(100002005, 'Daniel', 'J', 'Hall', '700 King St', 'Security', '700 King St'),
 (100003001, 'Ryan', 'K', 'Adams', '800 Queen St', 'Manager', '800 Queen St'),
 (100003002, 'Olivia', 'L', 'Carter', '800 Queen St', 'Receptionist', '800 Queen St'),
 (100003003, 'Ethan', 'M', 'Perez', '800 Queen St', 'Housekeeping', '800 Queen St'),
