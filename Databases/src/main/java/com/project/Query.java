@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.text.NumberFormat;
 
 
 public class Query {
@@ -77,6 +78,27 @@ public class Query {
             return Math.abs(days);
         }
 
+    public static String validateAndClean(String input) {
+        try {
+            // Try parsing the input as a number
+            double number = Double.parseDouble(input);
+
+            // Create a NumberFormat instance for formatting to 2 decimal places
+            NumberFormat nf = NumberFormat.getInstance();
+            nf.setMaximumFractionDigits(2);
+            nf.setMinimumFractionDigits(0); // No digits after decimal if not needed
+
+            // Format the number to the required pattern (XXXX.XX)
+            return nf.format(number);
+        } catch (NumberFormatException e) {
+            // If the input is not a valid number, return the part before the dot
+            if (input.contains(".")) {
+                return input.split("\\.")[0]; // Return only the part before the dot
+            }
+            return input; // Return the original input if no dot is present
+        }
+    }
+
     public boolean createBooking(String hotelAddress, String roomNumber, String checkIn, String custID, String checkOut) {
         String duration = Long.toString(calculateDateDifference(checkIn,checkOut));
         String sql = "INSERT INTO Booking \n" +
@@ -123,6 +145,40 @@ public class Query {
             System.out.println(e.getMessage());
             return false;
         }
+    }
+
+    public static ArrayList<Booking> getCustomerBooking(){return null;}
+
+    public boolean makeRenting(String hotelAddr, String roomNum, String checkInDate, String custID, String checkOutDate, String balance, String emp_SIN){
+        String duration = Long.toString(calculateDateDifference(checkInDate,checkOutDate));
+        float price = Float.parseFloat(balance) * calculateDateDifference(checkInDate,checkOutDate);
+        String priceString = String.valueOf(price);
+        String sql = "INSERT INTO Renting \n" +
+                "VALUES ('"+hotelAddr+"', "+roomNum+",'"+checkInDate+"','"+custID+"','"+checkOutDate+"',"+duration+","+validateAndClean(priceString)+","+emp_SIN+"); \n";
+        ConnectionDB con = new ConnectionDB();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            st.executeUpdate(sql);
+
+            st.close();
+            con.close();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public static boolean bookingToRenting(){
+        return true;
+    }
+
+    public static boolean makePayment(){
+        return true;
     }
 
     public static void main(String[] args){
