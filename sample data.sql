@@ -440,18 +440,18 @@ INSERT INTO Employee (SINOrSSN, FirstName, MiddleName, LastName, Address, Role, 
 (956789099, 'Amelia', 'HH', 'Robinson', '1103 King Rd', 'Maintenance', '1300 East Ave'),
 (967890199, 'Benjamin', 'II', 'Clark', '1104 King Rd', 'Security', '1300 East Ave');
 
-INSERT INTO Manages (SINOrSSN, HotelAddr) VALUES
-(123456789, '101 Beach Blvd'),
-(234567890, '202 Mountain Rd'),
-(345678901, '303 City St'),
-(456789012, '404 Desert Dr'),
-(567890123, '505 Forest Ave'),
-(678901234, '100 Grove Rd'),
-(967890123, '500 Yonge St'),
-(978901285, '500 Yonge St'),
-(923456790, '1010 Park Rd'),
-(978901295, '1200 River Rd'),
-(923456799, '1300 East Ave');
+--INSERT INTO Manages (SINOrSSN, HotelAddr) VALUES
+--(123456789, '101 Beach Blvd'),
+--(234567890, '202 Mountain Rd'),
+--(345678901, '303 City St'),
+--(456789012, '404 Desert Dr'),
+--(567890123, '505 Forest Ave'),
+--(678901234, '100 Grove Rd'),
+--(967890123, '500 Yonge St'),
+--(978901285, '500 Yonge St'),
+--(923456790, '1010 Park Rd'),
+--(978901295, '1200 River Rd'),
+--(923456799, '1300 East Ave');
 
 
 INSERT INTO Customer (ID, FirstName, MiddleName, LastName, Address, IDType, Date_Reg) VALUES
