@@ -142,7 +142,22 @@ CREATE TABLE Archive(
     Type char(7) CHECK(Type in ('Renting','Booking'))
 );
 
+CREATE FUNCTION add_manager_function()
+	RETURNS TRIGGER AS 
+$BODY$
+BEGIN
+	IF NEW.Role='Manager' THEN
+    INSERT INTO Manages(SINOrSSN, HotelAddr)
+    VALUES (NEW.SINOrSSN, NEW.HotelAddr);
+	END IF;
+    RETURN NEW;
+END;
+$BODY$ LANGUAGE plpgsql;
 
+CREATE TRIGGER add_manager 
+AFTER INSERT ON Employee
+FOR EACH ROW
+EXECUTE PROCEDURE add_manager_function();
 
 CREATE FUNCTION archive_renting_function()
 	RETURNS TRIGGER AS 
