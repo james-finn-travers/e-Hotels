@@ -147,7 +147,50 @@ public class Query {
         }
     }
 
-    public static ArrayList<Booking> getCustomerBooking(){return null;}
+    public static ArrayList<Booking> getCustomerBooking(String custID){
+
+        String sql = "SELECT * FROM Booking WHERE CustomerID = '"+  custID  +"'\n";
+
+        ConnectionDB con = new ConnectionDB();
+
+        ArrayList<Booking> bookings = new ArrayList<>();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            ResultSet rs = st.executeQuery(sql);
+
+            ResultSetMetaData rsm = rs.getMetaData();
+
+            int colCount = rsm.getColumnCount();
+
+            while (rs.next()){
+
+                Booking book = new Booking(
+                        rs.getString("HotelAddr"),
+                        rs.getString("RoomNum"),
+                        rs.getString("CheckInDate"),
+                        rs.getString("CustomerID"),
+                        rs.getString("CheckOutDate"),
+                        rs.getString("Duration")
+                );
+
+
+                bookings.add(book);
+
+            }
+            rs.close();
+            st.close();
+            con.close();
+
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return bookings;
+    }
 
     public boolean makeRenting(String hotelAddr, String roomNum, String checkInDate, String custID, String checkOutDate, String balance, String emp_SIN){
         String duration = Long.toString(calculateDateDifference(checkInDate,checkOutDate));
@@ -171,6 +214,34 @@ public class Query {
             System.out.println(e.getMessage());
             return false;
         }
+    }
+
+    public static int getPrice(String hotelAddr, String roomNum, String duration){
+        int result = 0;
+        int durationNum = Integer.parseInt(duration);
+        String sql = "SELECT Price FROM Room WHERE HotelAddr = '"+  hotelAddr  +"' AND RoomNum = '"+ roomNum +"' \n";
+
+        ConnectionDB con = new ConnectionDB();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            ResultSet rs = st.executeQuery(sql);
+
+            result = rs.getInt("Price") * durationNum;
+
+            rs.close();
+            st.close();
+            con.close();
+
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return result;
+
     }
 
     public static boolean bookingToRenting(){

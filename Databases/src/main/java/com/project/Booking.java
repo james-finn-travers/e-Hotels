@@ -71,7 +71,7 @@ public class Booking {
     }
 
     // Method to get a booking's details as an HTML table row
-    public String toString() {
+    public String toString(String emp_SIN) {
         return "<tr>"
                 + "<td>" + hotelAddr + "</td>"
                 + "<td>" + roomNum + "</td>"
@@ -79,6 +79,19 @@ public class Booking {
                 + "<td>" + customerID + "</td>"
                 + "<td>" + checkOutDate + "</td>"
                 + "<td>" + duration + "</td>"
+                + "<td>"
+                + "<form method='post' action='bookingToRenting.jsp?SIN=" +emp_SIN + " '>"
+                + "<input type='hidden' name='hotelAddr' value='" + hotelAddr + "'>"
+                + "<input type='hidden' name='roomNum' value='" + roomNum + "'>"
+                + "<input type='hidden' name='checkInDate' value='" + checkInDate + "'>"
+                + "<input type='hidden' name='customerID' value='" + customerID + "'>"
+                + "<input type='hidden' name='checkOutDate' value='" + checkOutDate + "'>"
+                + "<input type='hidden' name='duration' value='" + duration + "'>"
+                + "<input type='hidden' name='balance' value='" + Query.getPrice(hotelAddr, roomNum, duration) + "'>"
+                + "<input type='hidden' name='SIN' value='" + emp_SIN + "'>"
+                + "<button name = 'rent' type='submit'>Rent</button>"
+                + "</form>"
+                + "</td>"
                 + "</tr>";
     }
 
