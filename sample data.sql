@@ -45,7 +45,7 @@ INSERT INTO Hotel (HotelAddr, NumRooms, City, StarRating, HotelChainID) VALUES
 -- HotelChainID = 2
 ('303 City St', 1, 'Ottawa', 3, 2),
 ('1200 King Rd', 5, 'Toronto', 3, 2),
-('1300 East Ave', 4, 'Toronto', 2, 2),
+('1500 East Ave', 4, 'Toronto', 2, 2),
 ('1400 River Rd', 6, 'Ottawa', 4, 2),
 ('1500 Queen St', 7, 'Toronto', 5, 2),
 ('1600 Bay Ave', 6, 'Hamilton', 3, 2),
@@ -169,11 +169,11 @@ INSERT INTO Room (HotelAddr, RoomNum, Price, Capacity, View, Extendable) VALUES
 ('1200 King Rd', 404, 220.00, 5, 'None', false),
 ('1200 King Rd', 405, 140.00, 1, 'None', true),
 
-('1300 East Ave', 501, 110.00, 1, 'None', true),
-('1300 East Ave', 502, 130.00, 2, 'None', false),
-('1300 East Ave', 503, 140.00, 3, 'None', true),
-('1300 East Ave', 504, 160.00, 4, 'None', false),
-('1300 East Ave', 505, 180.00, 5, 'None', true),
+('1500 East Ave', 501, 110.00, 1, 'None', true),
+('1500 East Ave', 502, 130.00, 2, 'None', false),
+('1500 East Ave', 503, 140.00, 3, 'None', true),
+('1500 East Ave', 504, 160.00, 4, 'None', false),
+('1500 East Ave', 505, 180.00, 5, 'None', true),
 
 ('1400 River Rd', 601, 130.00, 2, 'None', false),
 ('1400 River Rd', 602, 150.00, 3, 'None', true),
