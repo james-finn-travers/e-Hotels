@@ -32,16 +32,56 @@ INSERT INTO ChainEmail (HotelChainID, EmailAddr) VALUES
 (5,'thechain@hotmail.com');
 
 INSERT INTO Hotel (HotelAddr, NumRooms, City, StarRating, HotelChainID) VALUES
-('101 Beach Blvd', 2,'Ottawa', 4, 1),
-('202 Mountain Rd', 1, 'Kanata',5, 1),
-('303 City St', 1, 'Ottawa',3, 2),
-('404 Desert Dr', 1, 'Kanata',2, 3),
-('505 Forest Ave', 5, 'Ottawa',4, 4),
-('100 Grove Rd', 3, 'Kanata',1, 4),
-('500 Yonge St', 8, 'Ottawa',1, 5),
-('600 Bay St', 10, 'Toronto',2, 5),
-('700 King St', 10, 'Toronto',3, 5),
-('800 Queen St', 4, 'Toronto',4, 5);
+-- HotelChainID = 1
+('101 Beach Blvd', 2, 'Ottawa', 4, 1),
+('202 Mountain Rd', 1, 'Kanata', 5, 1),
+('1010 Park Rd', 6, 'Ottawa', 3, 1),
+('1100 Main St', 9, 'Ottawa', 4, 1),
+('1200 River Rd', 7, 'Toronto', 2, 1),
+('1300 East Ave', 4, 'Toronto', 3, 1),
+('1400 King Rd', 5, 'Ottawa', 1, 1),
+('1500 Sunset Blvd', 8, 'Toronto', 4, 1),
+
+-- HotelChainID = 2
+('303 City St', 1, 'Ottawa', 3, 2),
+('1200 King Rd', 5, 'Toronto', 3, 2),
+('1300 East Ave', 4, 'Toronto', 2, 2),
+('1400 River Rd', 6, 'Ottawa', 4, 2),
+('1500 Queen St', 7, 'Toronto', 5, 2),
+('1600 Bay Ave', 6, 'Hamilton', 3, 2),
+('1700 Park Blvd', 5, 'Hamilton', 2, 2),
+('1800 Main St', 4, 'Toronto', 1, 2),
+
+-- HotelChainID = 3
+('404 Desert Dr', 1, 'Kanata', 2, 3),
+('1400 River Rd', 6, 'Ottawa', 4, 3),
+('1500 Queen Blvd', 7, 'Toronto', 5, 3),
+('1600 Forest Rd', 5, 'Ottawa', 2, 3),
+('1700 Lakeview Blvd', 8, 'Ottawa', 3, 3),
+('1800 Maple Ave', 5, 'Toronto', 4, 3),
+('1900 King St', 9, 'Toronto', 2, 3),
+('2000 Lakeshore Rd', 6, 'Hamilton', 3, 3),
+
+-- HotelChainID = 4
+('505 Forest Ave', 5, 'Ottawa', 4, 4),
+('100 Grove Rd', 3, 'Kanata', 1, 4),
+('1600 Bay Ave', 8, 'Hamilton', 2, 4),
+('1700 Park Blvd', 5, 'Hamilton', 3, 4),
+('1800 Birch Rd', 6, 'Toronto', 5, 4),
+('1900 Maple St', 9, 'Ottawa', 4, 4),
+('2000 Pine Ave', 7, 'Ottawa', 3, 4),
+('2100 River Rd', 6, 'Toronto', 2, 4),
+
+-- HotelChainID = 5
+('500 Yonge St', 8, 'Ottawa', 1, 5),
+('600 Bay St', 10, 'Toronto', 2, 5),
+('700 King St', 10, 'Toronto', 3, 5),
+('800 Queen St', 4, 'Toronto', 4, 5),
+('900 Lakeshore Blvd', 7, 'Toronto', 5, 5),
+('1010 Front St', 6, 'Toronto', 4, 5),
+('1100 Maple Blvd', 9, 'Ottawa', 5, 5),
+('1200 Woodward Ave', 12, 'Toronto', 5, 5);
+
 
 INSERT INTO HotelPhone (HotelAddr, PhoneNum) VALUES
 ('101 Beach Blvd', 1234567891),
