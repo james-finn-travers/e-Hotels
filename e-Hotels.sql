@@ -259,3 +259,8 @@ CREATE TRIGGER remove_room
 AFTER DELETE ON Room
 FOR EACH ROW
 EXECUTE PROCEDURE remove_room_function();
+
+
+CREATE INDEX idx_room_capacity ON Room(Capacity); -- can't increase/decrease size of room
+CREATE INDEX idx_room_view ON Room(View); -- can't change view of hotel room
+CREATE INDEX idx_hotel_city on Hotel(City) -- address will stay in same city
