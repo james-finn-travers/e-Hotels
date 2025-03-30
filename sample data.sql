@@ -108,17 +108,17 @@ INSERT INTO HotelEmail (HotelAddr, EmailAddr) VALUES
 
 INSERT INTO Room (HotelAddr, RoomNum, Price, Capacity, View, Extendable) VALUES
 -- HotelChainID = 1
-('101 Beach Blvd', 101, 150.00, 2, 'Sea', true),
+('101 Beach Blvd', 101, 150.00, 1, 'Sea', true),
 ('101 Beach Blvd', 102, 120.00, 2, 'Sea', false),
 ('101 Beach Blvd', 103, 160.00, 3, 'Sea', true),
 ('101 Beach Blvd', 104, 180.00, 4, 'Sea', true),
 ('101 Beach Blvd', 105, 200.00, 5, 'Sea', false),
 
-('202 Mountain Rd', 201, 200.00, 3, 'Mountain', true),
-('202 Mountain Rd', 202, 220.00, 4, 'Mountain', true),
-('202 Mountain Rd', 203, 240.00, 5, 'Mountain', false),
-('202 Mountain Rd', 204, 180.00, 2, 'Mountain', false),
-('202 Mountain Rd', 205, 150.00, 3, 'Mountain', true),
+('202 Mountain Rd', 201, 200.00, 1, 'Mountain', true),
+('202 Mountain Rd', 202, 220.00, 2, 'Mountain', true),
+('202 Mountain Rd', 203, 240.00, 3, 'Mountain', false),
+('202 Mountain Rd', 204, 180.00, 4, 'Mountain', false),
+('202 Mountain Rd', 205, 150.00, 5, 'Mountain', true),
 
 ('1010 Park Rd', 301, 110.00, 1, 'None', true),
 ('1010 Park Rd', 302, 120.00, 2, 'None', false),
@@ -126,11 +126,11 @@ INSERT INTO Room (HotelAddr, RoomNum, Price, Capacity, View, Extendable) VALUES
 ('1010 Park Rd', 304, 140.00, 4, 'None', false),
 ('1010 Park Rd', 305, 150.00, 5, 'None', true),
 
-('1100 Main St', 401, 130.00, 2, 'None', false),
-('1100 Main St', 402, 140.00, 3, 'None', true),
-('1100 Main St', 403, 160.00, 4, 'None', true),
-('1100 Main St', 404, 170.00, 5, 'None', false),
-('1100 Main St', 405, 120.00, 1, 'None', true),
+('1100 Main St', 401, 130.00, 1, 'None', false),
+('1100 Main St', 402, 140.00, 2, 'None', true),
+('1100 Main St', 403, 160.00, 3, 'None', true),
+('1100 Main St', 404, 170.00, 4, 'None', false),
+('1100 Main St', 405, 120.00, 5, 'None', true),
 
 ('1200 River Rd', 501, 100.00, 1, 'None', true),
 ('1200 River Rd', 502, 120.00, 2, 'None', false),
@@ -138,11 +138,11 @@ INSERT INTO Room (HotelAddr, RoomNum, Price, Capacity, View, Extendable) VALUES
 ('1200 River Rd', 504, 160.00, 4, 'None', true),
 ('1200 River Rd', 505, 180.00, 5, 'None', false),
 
-('1300 East Ave', 601, 110.00, 2, 'None', true),
-('1300 East Ave', 602, 120.00, 3, 'None', false),
-('1300 East Ave', 603, 140.00, 4, 'None', true),
-('1300 East Ave', 604, 150.00, 5, 'None', false),
-('1300 East Ave', 605, 130.00, 1, 'None', true),
+('1300 East Ave', 601, 110.00, 1, 'None', true),
+('1300 East Ave', 602, 120.00, 2, 'None', false),
+('1300 East Ave', 603, 140.00, 3, 'None', true),
+('1300 East Ave', 604, 150.00, 4, 'None', false),
+('1300 East Ave', 605, 130.00, 5, 'None', true),
 
 ('1400 King Rd', 701, 80.00, 1, 'None', true),
 ('1400 King Rd', 702, 90.00, 2, 'None', false),
@@ -150,11 +150,11 @@ INSERT INTO Room (HotelAddr, RoomNum, Price, Capacity, View, Extendable) VALUES
 ('1400 King Rd', 704, 120.00, 4, 'None', false),
 ('1400 King Rd', 705, 130.00, 5, 'None', true),
 
-('1500 Sunset Blvd', 801, 140.00, 2, 'None', true),
-('1500 Sunset Blvd', 802, 160.00, 3, 'None', false),
-('1500 Sunset Blvd', 803, 180.00, 4, 'None', true),
-('1500 Sunset Blvd', 804, 200.00, 5, 'None', false),
-('1500 Sunset Blvd', 805, 120.00, 1, 'None', true),
+('1500 Sunset Blvd', 801, 140.00, 1, 'None', true),
+('1500 Sunset Blvd', 802, 160.00, 2, 'None', false),
+('1500 Sunset Blvd', 803, 180.00, 3, 'None', true),
+('1500 Sunset Blvd', 804, 200.00, 4, 'None', false),
+('1500 Sunset Blvd', 805, 120.00, 5, 'None', true),
 
 -- HotelChainID = 2
 ('303 City St', 301, 100.00, 1, 'None', false),
@@ -163,11 +163,11 @@ INSERT INTO Room (HotelAddr, RoomNum, Price, Capacity, View, Extendable) VALUES
 ('303 City St', 304, 150.00, 4, 'None', false),
 ('303 City St', 305, 170.00, 5, 'None', true),
 
-('1200 King Rd', 401, 160.00, 2, 'None', true),
-('1200 King Rd', 402, 180.00, 3, 'None', false),
-('1200 King Rd', 403, 200.00, 4, 'None', true),
-('1200 King Rd', 404, 220.00, 5, 'None', false),
-('1200 King Rd', 405, 140.00, 1, 'None', true),
+('1200 King Rd', 401, 160.00, 1, 'None', true),
+('1200 King Rd', 402, 180.00, 2, 'None', false),
+('1200 King Rd', 403, 200.00, 3, 'None', true),
+('1200 King Rd', 404, 220.00, 4, 'None', false),
+('1200 King Rd', 405, 140.00, 5, 'None', true),
 
 ('1500 East Ave', 501, 110.00, 1, 'None', true),
 ('1500 East Ave', 502, 130.00, 2, 'None', false),
@@ -175,17 +175,17 @@ INSERT INTO Room (HotelAddr, RoomNum, Price, Capacity, View, Extendable) VALUES
 ('1500 East Ave', 504, 160.00, 4, 'None', false),
 ('1500 East Ave', 505, 180.00, 5, 'None', true),
 
-('1400 River Rd', 601, 130.00, 2, 'None', false),
-('1400 River Rd', 602, 150.00, 3, 'None', true),
-('1400 River Rd', 603, 160.00, 4, 'None', true),
-('1400 River Rd', 604, 170.00, 5, 'None', false),
-('1400 River Rd', 605, 110.00, 1, 'None', true),
+('1400 River Rd', 601, 130.00, 1, 'None', false),
+('1400 River Rd', 602, 150.00, 2, 'None', true),
+('1400 River Rd', 603, 160.00, 3, 'None', true),
+('1400 River Rd', 604, 170.00, 4, 'None', false),
+('1400 River Rd', 605, 110.00, 5, 'None', true),
 
-('1500 Queen St', 701, 150.00, 2, 'None', true),
-('1500 Queen St', 702, 170.00, 3, 'None', false),
-('1500 Queen St', 703, 180.00, 4, 'None', true),
-('1500 Queen St', 704, 200.00, 5, 'None', false),
-('1500 Queen St', 705, 120.00, 1, 'None', true),
+('1500 Queen St', 701, 150.00, 1, 'None', true),
+('1500 Queen St', 702, 170.00, 2, 'None', false),
+('1500 Queen St', 703, 180.00, 3, 'None', true),
+('1500 Queen St', 704, 200.00, 4, 'None', false),
+('1500 Queen St', 705, 120.00, 5, 'None', true),
 
 ('1600 Bay Ave', 801, 100.00, 1, 'None', true),
 ('1600 Bay Ave', 802, 120.00, 2, 'None', false),
@@ -212,11 +212,11 @@ INSERT INTO Room (HotelAddr, RoomNum, Price, Capacity, View, Extendable) VALUES
 ('404 Desert Dr', 404, 140.00, 4, 'None', false),
 ('404 Desert Dr', 405, 160.00, 5, 'None', true),
 
-('1401 River Rd', 501, 130.00, 2, 'None', false),
-('1401 River Rd', 502, 140.00, 3, 'None', true),
-('1401 River Rd', 503, 150.00, 4, 'None', true),
-('1401 River Rd', 504, 170.00, 5, 'None', false),
-('1401 River Rd', 505, 110.00, 1, 'None', true),
+('1401 River Rd', 501, 130.00, 1, 'None', false),
+('1401 River Rd', 502, 140.00, 2, 'None', true),
+('1401 River Rd', 503, 150.00, 3, 'None', true),
+('1401 River Rd', 504, 170.00, 4, 'None', false),
+('1401 River Rd', 505, 110.00, 5, 'None', true),
 
 ('1500 Queen Blvd', 601, 100.00, 1, 'None', true),
 ('1500 Queen Blvd', 602, 120.00, 2, 'None', false),
@@ -224,11 +224,11 @@ INSERT INTO Room (HotelAddr, RoomNum, Price, Capacity, View, Extendable) VALUES
 ('1500 Queen Blvd', 604, 160.00, 4, 'None', true),
 ('1500 Queen Blvd', 605, 180.00, 5, 'None', false),
 
-('1600 Forest Rd', 701, 110.00, 2, 'None', true),
-('1600 Forest Rd', 702, 130.00, 3, 'None', false),
-('1600 Forest Rd', 703, 140.00, 4, 'None', true),
-('1600 Forest Rd', 704, 150.00, 5, 'None', false),
-('1600 Forest Rd', 705, 120.00, 1, 'None', true),
+('1600 Forest Rd', 701, 110.00, 1, 'None', true),
+('1600 Forest Rd', 702, 130.00, 2, 'None', false),
+('1600 Forest Rd', 703, 140.00, 3, 'None', true),
+('1600 Forest Rd', 704, 150.00, 4, 'None', false),
+('1600 Forest Rd', 705, 120.00, 5, 'None', true),
 
 ('1700 Lakeview Blvd', 801, 140.00, 2, 'None', false),
 ('1700 Lakeview Blvd', 802, 160.00, 3, 'None', true),
@@ -328,7 +328,7 @@ INSERT INTO Room (HotelAddr, RoomNum, Price, Capacity, View, Extendable) VALUES
 ('800 Queen St', 804, 80.00, 4, 'None', true),
 ('800 Queen St', 805, 90.00, 5, 'None', false),
 
-('900 Lakeshore Blvd', 901, 100.00, 2, 'None', true),
+('900 Lakeshore Blvd', 901, 100.00, 1, 'None', true),
 ('900 Lakeshore Blvd', 902, 120.00, 3, 'None', false),
 ('900 Lakeshore Blvd', 903, 140.00, 4, 'None', true),
 ('900 Lakeshore Blvd', 904, 160.00, 5, 'None', false),
@@ -338,19 +338,19 @@ INSERT INTO Room (HotelAddr, RoomNum, Price, Capacity, View, Extendable) VALUES
 ('1010 Front St', 1002, 100.00, 2, 'None', false),
 ('1010 Front St', 1003, 120.00, 3, 'None', true),
 ('1010 Front St', 1004, 140.00, 4, 'None', false),
-('1010 Front St', 1005, 100.00, 2, 'None', false),
+('1010 Front St', 1005, 100.00, 5, 'None', false),
 
-('1100 Maple Blvd', 1101, 110.00, 2, 'None', true),
-('1100 Maple Blvd', 1102, 130.00, 3, 'None', false),
-('1100 Maple Blvd', 1103, 150.00, 4, 'None', true),
-('1100 Maple Blvd', 1104, 170.00, 5, 'None', false),
-('1100 Maple Blvd', 1105, 120.00, 3, 'None', true),
+('1100 Maple Blvd', 1101, 110.00, 1, 'None', true),
+('1100 Maple Blvd', 1102, 130.00, 2, 'None', false),
+('1100 Maple Blvd', 1103, 150.00, 3, 'None', true),
+('1100 Maple Blvd', 1104, 170.00, 4, 'None', false),
+('1100 Maple Blvd', 1105, 120.00, 5, 'None', true),
 
 ('1200 Woodward Ave', 1201, 90.00, 1, 'None', true),
 ('1200 Woodward Ave', 1202, 110.00, 2, 'None', false),
 ('1200 Woodward Ave', 1203, 130.00, 3, 'None', true),
 ('1200 Woodward Ave', 1204, 150.00, 4, 'None', false),
-('1200 Woodward Ave', 1205, 140.00, 4, 'None', false);
+('1200 Woodward Ave', 1205, 140.00, 5, 'None', false);
 
 INSERT INTO InstProblem (HotelAddr, RoomNum, Type) VALUES
 ('101 Beach Blvd', 101, 'AC Broken'),
