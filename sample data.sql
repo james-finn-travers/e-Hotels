@@ -353,55 +353,10 @@ INSERT INTO Room (HotelAddr, RoomNum, Price, Capacity, View, Extendable) VALUES
 ('1200 Woodward Ave', 1205, 140.00, 5, 'None', false);
 
 INSERT INTO InstProblem (HotelAddr, RoomNum, Type) VALUES
-('101 Beach Blvd', 101, 'AC Broken'),
-('202 Mountain Rd', 201, 'Shower Leak'),
-('303 City St', 301, 'No Hot Water'),
-('404 Desert Dr', 401, 'TV Not Working'),
-('505 Forest Ave', 501, 'Wi-Fi Down'),
---('100 Grove Rd', 101, 'AC Broken'),
-('500 Yonge St', 501, 'Shower Leak'),
-('500 Yonge St', 502, 'No Hot Water'),
-('500 Yonge St', 503, 'TV Not Working'),
-('500 Yonge St', 504, 'Wi-Fi Down'),
-('500 Yonge St', 505, 'AC Broken');
+('101 Beach Blvd', 101, 'AC Broken');
 
 INSERT INTO InstAmenity (HotelAddr, RoomNum, Type) VALUES
-('101 Beach Blvd', 101, 'Wi-Fi'),
-('202 Mountain Rd', 201, 'Mini Bar'),
-('303 City St', 301, 'TV'),
-('404 Desert Dr', 401, 'Air Conditioning'),
-('505 Forest Ave', 501, 'Balcony'),
---('100 Grove Rd', 101, 'Wi-Fi'),
-('500 Yonge St', 501, 'Mini Bar'),
-('500 Yonge St', 502, 'TV'),
-('500 Yonge St', 503, 'Air Conditioning'),
-('500 Yonge St', 504, 'Balcony'),
-('500 Yonge St', 505, 'Wi-Fi'),
-('600 Bay St', 601, 'Mini Bar'),
-('600 Bay St', 602, 'TV'),
-('600 Bay St', 603, 'Air Conditioning'),
-('600 Bay St', 604, 'Balcony'),
-('600 Bay St', 605, 'Wi-Fi'),
-('600 Bay St', 606, 'Mini Bar'),
-('600 Bay St', 607, 'TV'),
-('600 Bay St', 608, 'Air Conditioning'),
-('600 Bay St', 609, 'Balcony'),
-('600 Bay St', 610, 'Wi-Fi'),
-('600 Bay St', 611, 'Mini Bar'),
-('700 King St', 701, 'TV'),
-('700 King St', 702, 'Air Conditioning'),
-('700 King St', 703, 'Balcony'),
-('700 King St', 704, 'Wi-Fi'),
-('700 King St', 705, 'Mini Bar'),
-('700 King St', 706, 'TV'),
-('700 King St', 707, 'Air Conditioning'),
-('700 King St', 708, 'Balcony'),
-('700 King St', 709, 'Wi-Fi'),
-('700 King St', 710, 'Mini Bar'),
-('800 Queen St', 801, 'TV'),
-('800 Queen St', 802, 'Air Conditioning'),
-('800 Queen St', 803, 'Balcony'),
-('800 Queen St', 804, 'Wi-Fi');
+('101 Beach Blvd', 101, 'Wi-Fi');
 
 INSERT INTO Employee (SINOrSSN, FirstName, MiddleName, LastName, Address, Role, HotelAddr) VALUES
 (123456789, 'John', 'A', 'Doe', '111 Beach Ln', 'Manager', '101 Beach Blvd'),
