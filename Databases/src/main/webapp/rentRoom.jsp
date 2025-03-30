@@ -54,7 +54,6 @@
          <% if (request.getMethod().equalsIgnoreCase("post") && request.getParameter("submit") != null && request.getParameter("custID")!=null) {
                 String custID = request.getParameter("custID");
                 boolean isValid = true;
-                Query q = new Query();
          %>
                 <p>Hotel Address: <%= hotelAddr %></p>
                 <p>Room Number: <%= roomNum %></p>
@@ -62,7 +61,7 @@
                 <p>Customer ID: <%= custID %></p>
                 <p>Check-Out Date: <%= checkOut %></p>
          <%
-                boolean flag = q.makeRenting(hotelAddr,roomNum,checkIn, custID,checkOut, price, SIN);
+                boolean flag = Query.makeRenting(hotelAddr,roomNum,checkIn, custID,checkOut, SIN);
 
                 if (flag) {
                     %>

@@ -2,6 +2,7 @@ package com.project;
 
 import java.sql.*;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
@@ -192,10 +193,56 @@ public class Query {
         return bookings;
     }
 
-    public boolean makeRenting(String hotelAddr, String roomNum, String checkInDate, String custID, String checkOutDate, String balance, String emp_SIN){
+    public static ArrayList<Renting> getCustomerRenting(String custID){
+
+        String sql = "SELECT * FROM renting WHERE CustomerID = '"+  custID  +"' AND Balance > 0\n";
+
+        ConnectionDB con = new ConnectionDB();
+
+        ArrayList<Renting> rentings = new ArrayList<>();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            ResultSet rs = st.executeQuery(sql);
+
+            ResultSetMetaData rsm = rs.getMetaData();
+
+            int colCount = rsm.getColumnCount();
+
+            while (rs.next()){
+
+                Renting rent = new Renting(
+                        rs.getString("HotelAddr"),
+                        rs.getString("RoomNum"),
+                        rs.getString("CheckInDate"),
+                        rs.getString("CustomerID"),
+                        rs.getString("CheckOutDate"),
+                        rs.getString("Duration"),
+                        rs.getString("Balance"),
+                        rs.getString("EmployeeSINOrSSN")
+                );
+
+
+                rentings.add(rent);
+
+            }
+            rs.close();
+            st.close();
+            con.close();
+
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return rentings;
+    }
+
+    public static boolean makeRenting(String hotelAddr, String roomNum, String checkInDate, String custID, String checkOutDate , String emp_SIN){
         String duration = Long.toString(calculateDateDifference(checkInDate,checkOutDate));
-        float price = Float.parseFloat(balance) * calculateDateDifference(checkInDate,checkOutDate);
-        String priceString = String.valueOf(price);
+        String priceString = String.valueOf(getPrice(hotelAddr,roomNum,duration));
         String sql = "INSERT INTO Renting \n" +
                 "VALUES ('"+hotelAddr+"', "+roomNum+",'"+checkInDate+"','"+custID+"','"+checkOutDate+"',"+duration+","+validateAndClean(priceString)+","+emp_SIN+"); \n";
         ConnectionDB con = new ConnectionDB();
@@ -229,7 +276,9 @@ public class Query {
             st.executeUpdate("SET search_path = 'e-Hotel';");
             ResultSet rs = st.executeQuery(sql);
 
-            result = rs.getInt("Price") * durationNum;
+            while (rs.next()){
+                result = rs.getInt("Price") * durationNum;
+            }
 
             rs.close();
             st.close();
@@ -244,12 +293,55 @@ public class Query {
 
     }
 
-    public static boolean bookingToRenting(){
-        return true;
+    public static boolean bookingToRenting(String hotelAddr, String roomNum,String checkInDate, String custID, String checkOutDate, String SIN){
+        boolean flag1 = makeRenting(hotelAddr, roomNum, checkInDate, custID, checkOutDate, SIN);
+        boolean flag2 = delBooking(hotelAddr, roomNum, checkInDate);
+        return flag1 && flag2;
     }
 
-    public static boolean makePayment(){
-        return true;
+    public static boolean delBooking(String hotelAddr, String roomNum, String checkInDate){
+        String sql = "DELETE FROM Booking WHERE HotelAddr = '"+  hotelAddr  +"' AND RoomNum = '"+ roomNum +"' AND checkInDate = '"+ checkInDate +"' ;";
+        ConnectionDB con = new ConnectionDB();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            st.executeUpdate(sql);
+
+            st.close();
+            con.close();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+
+
+    public static boolean makePayment(String hotelAddr, String roomNum, String checkInDate, String custID, String paymentAmount){
+        LocalDate currentDate = LocalDate.now();
+        String paymentDate = currentDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String sql = "INSERT INTO Payment \n" +
+                "VALUES ('"+hotelAddr+"', "+roomNum+",'"+checkInDate+"','"+custID+"','"+paymentAmount+"','"+paymentDate+"'); \n";
+        ConnectionDB con = new ConnectionDB();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            st.executeUpdate(sql);
+
+            st.close();
+            con.close();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 
     public static void main(String[] args){

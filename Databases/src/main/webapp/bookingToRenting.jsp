@@ -59,7 +59,7 @@
         String duration = request.getParameter("duration");
         String balance = request.getParameter("balance");
 
-        boolean flag = Query.bookingToRenting();
+        boolean flag = Query.bookingToRenting(hotelAddr, roomNum, checkInDate, customerID,checkOutDate, SIN);
 
         if(flag){
         %>
@@ -74,6 +74,9 @@
 
     }
 %>
+
+    <a href="index.jsp">Go Back</a> <!-- Adjust this if your main page has a different name -->
+
 
 </body>
 </html>
