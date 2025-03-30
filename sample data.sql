@@ -428,7 +428,18 @@ INSERT INTO Employee (SINOrSSN, FirstName, MiddleName, LastName, Address, Role, 
 (934567890, 'Jill', 'V', 'Pink', '500 Yonge St', 'Receptionist', '500 Yonge St'),
 (945678901, 'Jim', 'W', 'Brown', '500 Yonge St', 'Housekeeping', '500 Yonge St'),
 (956789012, 'Jenny', 'X', 'Green', '500 Yonge St', 'Maintenance', '500 Yonge St'),
-(967890123, 'Jack', 'Y', 'Black', '500 Yonge St', 'Security', '500 Yonge St');
+(967890123, 'Jack', 'Y', 'Black', '500 Yonge St', 'Security', '500 Yonge St'),
+(923456789, 'James', 'K', 'Orange', '1010 Park Rd', 'Manager', '1010 Park Rd'),
+(123456789, 'John', 'A', 'Doe', '1100 Main St', 'Manager', '1100 Main St'),
+(923456789, 'James', 'K', 'Orange', '1200 River Rd', 'Manager', '1200 River Rd'),
+(923456789, 'James', 'K', 'Orange', '1300 East Ave', 'Manager', '1300 East Ave'),
+(123456789, 'John', 'A', 'Doe', '1400 King Rd', 'Manager', '1400 King Rd'),
+(923456789, 'James', 'K', 'Orange', '1500 Sunset Blvd', 'Manager', '1500 Sunset Blvd'),
+(123456789, 'John', 'A', 'Doe', '1200 King Rd', 'Manager', '1200 King Rd'),
+(923456789, 'James', 'K', 'Orange', '1500 Queen St', 'Manager', '1500 Queen St'),
+(923456789, 'James', 'K', 'Orange', '1600 Bay Ave', 'Manager', '1600 Bay Ave'),
+(923456789, 'James', 'K', 'Orange', '1700 Park Blvd', 'Manager', '1700 Park Blvd'),
+(923456789, 'James', 'K', 'Orange', '1800 Main St', 'Manager', '1800 Main St');
 
 INSERT INTO Manages (SINOrSSN, HotelAddr) VALUES
 (123456789, '101 Beach Blvd'),
@@ -437,7 +448,18 @@ INSERT INTO Manages (SINOrSSN, HotelAddr) VALUES
 (456789012, '404 Desert Dr'),
 (567890123, '505 Forest Ave'),
 (678901234, '100 Grove Rd'),
-(967890123, '500 Yonge St');
+(967890123, '500 Yonge St'),
+(923456789, '1010 Park Rd'),
+(123456789, '1100 Main St'),
+(923456789, '1200 River Rd'),
+(923456789, '1300 East Ave'),
+(123456789, '1400 King Rd'),
+(923456789, '1500 Sunset Blvd'),
+(123456789, '1200 King Rd'),
+(923456789, '1500 Queen St'),
+(923456789, '1600 Bay Ave'),
+(923456789, '1700 Park Blvd'),
+(923456789, '1800 Main St');
 
 INSERT INTO Customer (ID, FirstName, MiddleName, LastName, Address, IDType, Date_Reg) VALUES
 ('C001', 'Alice', 'X', 'Johnson', '123 Elm St', 'Passport', '2025-01-01'),
