@@ -22,7 +22,7 @@
     </head>
     <body>
         <h1> Customer Form</h1>
-        <form id="employeeForm">
+        <form id="employeeForm" method="post">
             <label for="id">ID:</label>
             <input type="text" id="id" name="id" required>
             <br><br>

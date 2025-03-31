@@ -22,7 +22,7 @@
 </head>
 <body>
       <h1>Hotel Management System</h1>
-          <form id="hotelForm">
+          <form id="hotelForm" method="post">
               <label for="hotelAddr">Hotel Address:</label>
               <input type="text" id="hotelAddr" name="hotelAddr" required maxlength="20">
               <br><br>

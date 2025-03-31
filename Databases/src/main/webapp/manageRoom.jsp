@@ -30,7 +30,7 @@
 </head>
 <body>
        <h1>Room Management System</h1>
-          <form id="roomForm">
+          <form id="roomForm" method="post">
               <label for="hotelAddr">Hotel Address:</label>
               <input type="text" id="hotelAddr" name="hotelAddr" required maxlength="20">
               <br><br>
