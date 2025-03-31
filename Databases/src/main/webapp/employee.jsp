@@ -28,7 +28,7 @@
    else {%>
 
    <form method="post">
-         <label for="SIN">Enter a String:</label>
+         <label for="SIN">Enter a SIN:</label>
          <input type="text" id="SIN" name="SIN" required>
          <br><br>
          <button type="submit">Submit</button>

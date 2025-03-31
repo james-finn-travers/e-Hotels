@@ -20,7 +20,7 @@
 
         <br><br>
 
-        <label for="numberPicker">Select a number (1-5):</label>
+        <label for="numberPicker">Rating at least (1-5):</label>
         <select id="numberPicker" name="numberPicker">
             <option value="1">1</option>
             <option value="2">2</option>
