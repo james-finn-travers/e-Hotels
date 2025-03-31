@@ -172,8 +172,21 @@ public class Query {
     }
 
     public static boolean customerUpdate(String ID, String firstName, String middleName, String lastName, String address, String idType){
+        String firstNameQuery = (firstName!="") ? " FirstName = '"+firstName+"' " : firstName;
+        String middleNameQuery  = (middleName!="") ? " MiddleName = '"+middleName+"' " : middleName;
+        String lastNameQuery  = (lastName!="") ? " LastName = '"+lastName+"' " : lastName;
+        String addressQuery  = (address!="") ? " Address = '"+address+"' " : address;
+        String idTypeQuery  = (idType!="") ? " IDType = '"+idType+"' " : idType;
+
+        String[] queryArray = {firstNameQuery,middleNameQuery,lastNameQuery,addressQuery,idTypeQuery};
+        String tmp ="";
+        for (String s :queryArray){
+            tmp += (s!="") ? s+", ":s;
+        }
+        tmp=tmp.substring(0, tmp.length()-1);
+        
         String sql = "UPDATE Customer \n" +
-                "SET FirstName = '"+firstName+"', MiddleName = '"+middleName+"', LastName = '"+lastName+"', Address = '"+address+"', IDType = '"+idType+"' \n" +
+                "SET "+tmp+"' \n" +
                 "WHERE ID = '"+ID+"'; \n";
         ConnectionDB con = new ConnectionDB();
 
@@ -236,8 +249,22 @@ public class Query {
 
 
     public static boolean empUpdate(String SIN, String firstName, String middleName, String lastName, String address, String jobTitle, String hotelAddr){
+        String firstNameQuery = (firstName!="") ? " FirstName = '"+firstName+"' " : firstName;
+        String middleNameQuery  = (middleName!="") ? " MiddleName = '"+middleName+"' " : middleName;
+        String lastNameQuery  = (lastName!="") ? " LastName = '"+lastName+"' " : lastName;
+        String addressQuery  = (address!="") ? " Address = '"+address+"' " : address;
+        String jobTitleQuery  = (jobTitle!="") ? " Role = '"+jobTitle+"' " : jobTitle;
+        String hotelAddrQuery  = (hotelAddr!="") ? " HotelAddr = '"+hotelAddr+"' " : hotelAddr;
+
+        String[] queryArray = {firstNameQuery,middleNameQuery,lastNameQuery,addressQuery,jobTitleQuery,hotelAddrQuery};
+        String tmp ="";
+        for (String s :queryArray){
+            tmp += (s!="") ? s+", ":s;
+        }
+        tmp=tmp.substring(0, tmp.length()-1);
+        
         String sql = "UPDATE Employee \n" +
-                "SET FirstName = '"+firstName+"', MiddleName = '"+middleName+"', LastName = '"+lastName+"', Address = '"+address+"', JobTitle = '"+jobTitle+"', HotelAddr = '"+hotelAddr+"' \n" +
+                "SET "+tmp+" \n" +
                 "WHERE SINOrSSN = '"+SIN+"'; \n";
         ConnectionDB con = new ConnectionDB();
 
@@ -319,9 +346,20 @@ public class Query {
         }
     }
 
-    public static boolean hotelUpdate(String hotelAddr, String hotelName){
+    public static boolean hotelUpdate(String hotelAddr, String city, String starRating, String hotelChainID){
+        String cityQuery = (city!="") ? " City = '"+city+"' " : city;
+        String starRatingQuery  = (starRating!="") ? " StarRating  = '"+starRating+"' " : starRating;
+        String hotelChainIDQuery  = (hotelChainID!="") ? " HotelChainID  = '"+hotelChainID+"' " : hotelChainID;
+
+        String[] queryArray = {cityQuery,starRatingQuery,hotelChainIDQuery};
+        String tmp ="";
+        for (String s :queryArray){
+            tmp += (s!="") ? s+", ":s;
+        }
+        tmp=tmp.substring(0, tmp.length()-1);
+        
         String sql = "UPDATE Hotel \n" +
-                "SET HotelName = '"+hotelName+"' \n" +
+                "SET "+tmp+" \n" +
                 "WHERE HotelAddr = '"+hotelAddr+"'; \n";
         ConnectionDB con = new ConnectionDB();
 
@@ -381,9 +419,21 @@ public class Query {
         }
     }
 
-    public static boolean roomUpdate(String hotelAddr, String roomNum, String roomType){
+    public static boolean roomUpdate(String hotelAddr, String roomNum, String price, String capacity, String view, String extendable){
+        String priceQuery = (price!="") ? " Price = "+price+" " : price;
+        String capacityQuery  = (capacity!="") ? " Capacity  = "+capacity+" " : capacity;
+        String viewQuery  = (view!="") ? " View  = '"+view+"' " : view;
+        String extendableQuery  = (extendable!="") ? " Extendable  = "+extendable+" " : extendable;
+
+        String[] queryArray = {cityQuery,starRatingQuery,hotelChainIDQuery};
+        String tmp ="";
+        for (String s :queryArray){
+            tmp += (s!="") ? s+", ":s;
+        }
+        tmp=tmp.substring(0, tmp.length()-1);
+        
         String sql = "UPDATE Room \n" +
-                "SET RoomType = '"+roomType+"' \n" +
+                "SET "+tmp+" \n" +
                 "WHERE HotelAddr = '"+hotelAddr+"' AND RoomNum = "+roomNum+"; \n";
         ConnectionDB con = new ConnectionDB();
 
