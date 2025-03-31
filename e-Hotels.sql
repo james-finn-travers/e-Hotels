@@ -281,7 +281,7 @@ CREATE INDEX idx_room_view ON Room(View); -- It is not possible to change the vi
 CREATE INDEX idx_hotel_city on Hotel(City); -- The hotel cannot change cities without changing addresses (which is also impossible). In addition, there are 4 different cities in the populated database (Ottawa, Kanata, Toronto, Hamliton), this index could reduce query time by up to 75%.
 
 CREATE VIEW roomsPerArea AS
-SELECT City, SUM(RoomNum) as "Number of Rooms Available"
+SELECT City, SUM(numRooms) as "Number of Rooms Available"
 FROM Hotel join Room on Hotel.HotelAddr=Room.HotelAddr
 GROUP BY City;
 
