@@ -9,12 +9,6 @@
     <title>Employee Sign-in</title>
 </head>
 <body>
-  <form method="post">
-      <label for="SIN">Enter a String:</label>
-      <input type="text" id="SIN" name="SIN" required>
-      <br><br>
-      <button type="submit">Submit</button>
-  </form>
 
    <%
       if (request.getMethod().equalsIgnoreCase("post") && request.getParameter("SIN") != null) {
@@ -30,6 +24,18 @@
           <p>Employee not found. Please try again.</p>
       <% } %>
 
-   <% } %>
+   <% }
+   else {%>
+
+   <form method="post">
+         <label for="SIN">Enter a String:</label>
+         <input type="text" id="SIN" name="SIN" required>
+         <br><br>
+         <button type="submit">Submit</button>
+     </form>
+
+     <% }%>
+       <a href="index.jsp">Go Back</a> <!-- Adjust this if your main page has a different name -->
+
 </body>
 </html>

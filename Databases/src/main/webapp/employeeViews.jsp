@@ -67,5 +67,8 @@ if (request.getMethod().equalsIgnoreCase("post") && request.getParameter("SIN")!
 }
 %>
 
+    <a href="index.jsp">Go Back</a> <!-- Adjust this if your main page has a different name -->
+
+
 </body>
 </html>

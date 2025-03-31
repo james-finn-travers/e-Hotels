@@ -5,6 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Employees</title>
+    <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById("operation").addEventListener("change", function() {
+                    let isDelete = this.value === "delete";
+                    let formInputs = document.querySelectorAll("#employeeForm input");
+
+                    formInputs.forEach(input => {
+                        if (input.id !== "sinOrSsn") {
+                            input.disabled = isDelete;
+                        }
+                    });
+                });
+            });
+        </script>
 </head>
 <body>
       </form><h1>Employee Registration Form</h1>
@@ -62,10 +76,11 @@
                                 String lastName = request.getParameter("lastName");
                                 String role = request.getParameter("role");
                                 String hotelAddr = request.getParameter("hotelAddr");
+                                String address = request.getParameter("address");
                                 String operation = request.getParameter("operation");
 
                                 if(operation.equals("insert")){
-                                    boolean flag1 = Query.empInsert(sinOrSsn,firstName,middleName,lastName,role,hotelAddr);
+                                    boolean flag1 = Query.empInsert(sinOrSsn,firstName,middleName,lastName,address, role,hotelAddr);
                                     if(flag1){
                                                            %>
                                                            <p> Success! Employee Registered</p>
@@ -86,12 +101,12 @@
                                                            }
                                                            else {
                                                            %>
-                                                             <p> Error! Customer Deletion failed</p>
+                                                             <p> Error! Employee Deletion failed</p>
                                                            <%
                                                            }
                                 }
-                                else if if(operation.equals("update")){
-                                     boolean flag1 = Query.empInsert(sinOrSsn,firstName,middleName,lastName,role,hotelAddr);
+                                else if(operation.equals("update")){
+                                     boolean flag1 = Query.empUpdate(sinOrSsn,firstName,middleName,lastName,address,role,hotelAddr);
                                      if(flag1){
                                                             %>
                                                             <p> Success! Employee Info Updated </p>
@@ -103,7 +118,9 @@
                                                             <%
                                                             }
                                 }
+                    }
                  %>
+    <a href="index.jsp">Go Back</a> <!-- Adjust this if your main page has a different name -->
 
 </body>
 </html>

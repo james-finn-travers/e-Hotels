@@ -4,29 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Employees</title>
+    <title>Manage Hotel</title>
+    <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.getElementById("operation").addEventListener("change", function() {
+                        let isDelete = this.value === "delete";
+                        let formInputs = document.querySelectorAll("#hotelForm input");
+
+                        formInputs.forEach(input => {
+                            if (input.id !== "hotelAddr") {
+                                input.disabled = isDelete;
+                            }
+                        });
+                    });
+                });
+            </script>
 </head>
 <body>
       <h1>Hotel Management System</h1>
           <form id="hotelForm">
               <label for="hotelAddr">Hotel Address:</label>
               <input type="text" id="hotelAddr" name="hotelAddr" required maxlength="20">
-              <div id="hotelAddrError" class="error">Hotel Address is required (max 20 characters)</div>
               <br><br>
 
               <label for="numRooms">Number of Rooms:</label>
               <input type="number" id="numRooms" name="numRooms" required min="1">
-              <div id="numRoomsError" class="error">Number of rooms must be a positive number</div>
               <br><br>
 
               <label for="city">City:</label>
               <input type="text" id="city" name="city" required maxlength="20">
-              <div id="cityError" class="error">City is required (max 20 characters)</div>
               <br><br>
 
               <label for="starRating">Star Rating:</label>
               <input type="number" id="starRating" name="starRating" required min="0" max="5">
-              <div id="starRatingError" class="error">Star rating must be between 0 and 5</div>
               <br><br>
 
               <label for="hotelChainID">Hotel Chain ID:</label>
@@ -55,7 +65,7 @@
                                 String operation = request.getParameter("operation");
 
                                 if(operation.equals("insert")){
-                                    boolean flag1 = Query.hotelInsert(hotelAddr,numRooms,city,starRating,hotelChainID);
+                                    boolean flag1 = Query.hotelInsert(hotelAddr,city,starRating,hotelChainID);
                                     if(flag1){
                                                            %>
                                                            <p> Success! Hotel Registered</p>
@@ -80,8 +90,8 @@
                                                            <%
                                                            }
                                 }
-                                else if if(operation.equals("update")){
-                                     boolean flag1 = Query.hotelInsert(hotelAddr,numRooms,city,starRating,hotelChainID);
+                                else if(operation.equals("update")){
+                                     boolean flag1 = Query.hotelUpdate(hotelAddr,city,starRating,hotelChainID);
                                      if(flag1){
                                                             %>
                                                             <p> Success! Hotel Info Updated </p>
@@ -93,7 +103,9 @@
                                                             <%
                                                             }
                                 }
+                  }
                  %>
+    <a href="index.jsp">Go Back</a> <!-- Adjust this if your main page has a different name -->
 
 </body>
 </html>

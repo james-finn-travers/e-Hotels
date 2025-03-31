@@ -5,6 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Employees</title>
+    <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        document.getElementById("operation").addEventListener("change", function() {
+                            let isDelete = this.value === "delete";
+                            let formInputs = document.querySelectorAll("#roomForm input");
+                            let formSelects = document.querySelectorAll("#roomForm select");
+
+                            formSelects.forEach(select => {
+                                  if (select.id !== "operation") {
+                                      select.disabled = isDelete;
+                                                      }
+                              });
+
+
+                            formInputs.forEach(input => {
+                                if (input.id !== "hotelAddr" && input.id !== "roomNum") {
+                                                        input.disabled = isDelete;
+                                                    }
+                            });
+                        });
+                    });
+                </script>
 </head>
 <body>
        <h1>Room Management System</h1>
@@ -15,21 +37,18 @@
 
               <label for="roomNum">Room Number:</label>
               <input type="number" id="roomNum" name="roomNum" required min="1">
-              <div id="roomNumError" class="error">Room Number is required</div>
               <br><br>
 
               <label for="price">Price:</label>
-              <input type="number" id="price" name="price" required min="0" step="0.01">
-              <div id="priceError" class="error">Price must be a positive number</div>
+              <input type="number" id="price" name="price" min="0" step="0.01">
               <br><br>
 
               <label for="capacity">Capacity:</label>
-              <input type="number" id="capacity" name="capacity" required min="1">
-              <div id="capacityError" class="error">Capacity must be a positive number</div>
+              <input type="number" id="capacity" name="capacity" min="1">
               <br><br>
 
               <label for="view">View:</label>
-              <select id="view" name="view" required>
+              <select id="view" name="view">
                   <option value="Mountain">Mountain</option>
                   <option value="Sea">Sea</option>
                   <option value="None">None</option>
@@ -37,7 +56,7 @@
               <br><br>
 
               <label for="extendable">Extendable:</label>
-              <select id="extendable" name="extendable" required>
+              <select id="extendable" name="extendable">
                   <option value="true">Yes</option>
                   <option value="false">No</option>
               </select>
@@ -91,7 +110,7 @@
                                                            <%
                                                            }
                                 }
-                                else if if(operation.equals("update")){
+                                else if (operation.equals("update")){
                                      boolean flag1 = Query.roomUpdate(hotelAddr,roomNum,price,capacity,view, extendable);
                                      if(flag1){
                                                             %>
@@ -104,7 +123,9 @@
                                                             <%
                                                             }
                                 }
+                  }
                  %>
+    <a href="index.jsp">Go Back</a> <!-- Adjust this if your main page has a different name -->
 
 </body>
 </html>

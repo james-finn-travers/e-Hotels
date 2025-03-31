@@ -227,8 +227,8 @@ public class Query {
         }
     }
 
-    public static boolean empInsert(String SIN, String firstName, String middleName, String lastName, String role, String hotelAddr){
-        String sql = "INSERT INTO Employee VALUES("+SIN+",'"+firstName+"','"+middleName+"','"+lastName+"','"+role+"','"+hotelAddr+"'); \n";
+    public static boolean empInsert(String SIN, String firstName, String middleName, String lastName,String address, String role, String hotelAddr){
+        String sql = "INSERT INTO Employee VALUES("+SIN+",'"+firstName+"','"+middleName+"','"+lastName+"','"+address+"','"+role+"','"+hotelAddr+"'); \n";
         ConnectionDB con = new ConnectionDB();
 
         try {
@@ -425,7 +425,7 @@ public class Query {
         String viewQuery  = (view!="") ? " View  = '"+view+"' " : view;
         String extendableQuery  = (extendable!="") ? " Extendable  = "+extendable+" " : extendable;
 
-        String[] queryArray = {cityQuery,starRatingQuery,hotelChainIDQuery};
+        String[] queryArray = {priceQuery,capacityQuery,viewQuery,extendableQuery};
         String tmp ="";
         for (String s :queryArray){
             tmp += (s!="") ? s+", ":s;
