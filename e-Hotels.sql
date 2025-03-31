@@ -282,7 +282,7 @@ CREATE INDEX idx_hotel_city on Hotel(City); -- The hotel cannot change cities wi
 
 CREATE VIEW roomsPerArea AS
 SELECT City, SUM(numRooms) as "Number of Rooms Available"
-FROM Hotel join Room on Hotel.HotelAddr=Room.HotelAddr
+FROM Hotel
 GROUP BY City;
 
 CREATE VIEW totalCapacity AS
