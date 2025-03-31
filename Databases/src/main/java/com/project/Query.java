@@ -151,6 +151,92 @@ public class Query {
         }
     }
 
+    public static boolean deleteCustomer(String ID){
+        String sql = "DELETE FROM Customer WHERE ID = '"+ID+"'; \n";
+        ConnectionDB con = new ConnectionDB();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            st.executeUpdate(sql);
+
+            st.close();
+            con.close();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public static boolean editCustomer(String ID, String firstName, String middleName, String lastName, String address, String idType){
+        String sql = "UPDATE Customer \n" +
+                "SET FirstName = '"+firstName+"', MiddleName = '"+middleName+"', LastName = '"+lastName+"', Address = '"+address+"', IDType = '"+idType+"' \n" +
+                "WHERE ID = '"+ID+"'; \n";
+        ConnectionDB con = new ConnectionDB();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            st.executeUpdate(sql);
+
+            st.close();
+            con.close();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+
+    public static boolean deleteEmployee(String SIN){
+        String sql = "DELETE FROM Employee WHERE SINOrSSN = '"+SIN+"'; \n";
+        ConnectionDB con = new ConnectionDB();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            st.executeUpdate(sql);
+
+            st.close();
+            con.close();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+
+    public static boolean editEmployee(String SIN, String firstName, String middleName, String lastName, String address, String jobTitle, String hotelAddr){
+        String sql = "UPDATE Employee \n" +
+                "SET FirstName = '"+firstName+"', MiddleName = '"+middleName+"', LastName = '"+lastName+"', Address = '"+address+"', JobTitle = '"+jobTitle+"', HotelAddr = '"+hotelAddr+"' \n" +
+                "WHERE SINOrSSN = '"+SIN+"'; \n";
+        ConnectionDB con = new ConnectionDB();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            st.executeUpdate(sql);
+
+            st.close();
+            con.close();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
     public static boolean custExists(String ID){
         String sql = "SElECT ID FROM Customer \n" +
                 "WHERE ID = '"+ID+"'; \n";
@@ -166,6 +252,90 @@ public class Query {
             st.close();
             con.close();
             return exists;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public static boolean deleteHotel(String hotelAddr){
+        String sql = "DELETE FROM Hotel WHERE HotelAddr = '"+hotelAddr+"'; \n";
+        ConnectionDB con = new ConnectionDB();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            st.executeUpdate(sql);
+
+            st.close();
+            con.close();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public static boolean editHotel(String hotelAddr, String hotelName){
+        String sql = "UPDATE Hotel \n" +
+                "SET HotelName = '"+hotelName+"' \n" +
+                "WHERE HotelAddr = '"+hotelAddr+"'; \n";
+        ConnectionDB con = new ConnectionDB();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            st.executeUpdate(sql);
+
+            st.close();
+            con.close();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public static boolean deleteRoom(String hotelAddr, String roomNum){
+        String sql = "DELETE FROM Room WHERE HotelAddr = '"+hotelAddr+"' AND RoomNum = "+roomNum+"; \n";
+        ConnectionDB con = new ConnectionDB();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            st.executeUpdate(sql);
+
+            st.close();
+            con.close();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public static boolean editRoom(String hotelAddr, String roomNum, String roomType){
+        String sql = "UPDATE Room \n" +
+                "SET RoomType = '"+roomType+"' \n" +
+                "WHERE HotelAddr = '"+hotelAddr+"' AND RoomNum = "+roomNum+"; \n";
+        ConnectionDB con = new ConnectionDB();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            st.executeUpdate(sql);
+
+            st.close();
+            con.close();
+            return true;
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -218,6 +388,8 @@ public class Query {
 
         return bookings;
     }
+
+
 
     public static ArrayList<Renting> getCustomerRenting(String custID){
 
@@ -344,6 +516,8 @@ public class Query {
             return false;
         }
     }
+
+
 
     public static boolean createCustomer(String ID, String firstName,String middleName, String lastName, String address,String idType){
         LocalDate currentDate = LocalDate.now();
