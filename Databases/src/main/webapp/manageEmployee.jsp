@@ -22,7 +22,7 @@
 </head>
 <body>
       </form><h1>Employee Registration Form</h1>
-                 <form id="employeeForm">
+                 <form id="employeeForm" method="post">
 
                          <label for="sinOrSsn">SIN/SSN:</label>
                          <input type="number" id="sinOrSsn" name="sinOrSsn" required min="100000000" max="999999999">
@@ -31,29 +31,29 @@
 
 
                          <label for="firstName">First Name:</label>
-                         <input type="text" id="firstName" name="firstName" required maxlength="20">
+                         <input type="text" id="firstName" name="firstName"  maxlength="20">
 
                             <br>                            <br>
 
 
                          <label for="middleName">Middle Name:</label>
-                         <input type="text" id="middleName" name="middleName" required maxlength="20">
+                         <input type="text" id="middleName" name="middleName" maxlength="20">
                             <br>                            <br>
 
                          <label for="lastName">Last Name:</label>
-                         <input type="text" id="lastName" name="lastName" required maxlength="20">
+                         <input type="text" id="lastName" name="lastName"  maxlength="20">
                             <br>                            <br>
 
                          <label for="address">Address:</label>
-                         <input type="text" id="address" name="address" required maxlength="20">
+                         <input type="text" id="address" name="address"  maxlength="20">
                             <br>                            <br>
 
                          <label for="role">Role:</label>
-                         <input type="text" id="role" name="role" required maxlength="20">
+                         <input type="text" id="role" name="role"  maxlength="20">
                             <br>                            <br>
 
                          <label for="hotelAddr">Hotel Address:</label>
-                         <input type="text" id="hotelAddr" name="hotelAddr" required maxlength="20">
+                         <input type="text" id="hotelAddr" name="hotelAddr" maxlength="20">
                             <br>                            <br>
 
                                     <label for="operation">Select Operation:</label>
@@ -64,7 +64,7 @@
                                      </select>
                             <br>                            <br>
 
-                     <button type="submit">Register Employee</button>
+                     <button name = "submit" type="submit">Submit</button>
                  </form>
 
 

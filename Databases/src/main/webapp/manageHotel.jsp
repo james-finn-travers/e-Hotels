@@ -28,23 +28,23 @@
               <br><br>
 
               <label for="numRooms">Number of Rooms:</label>
-              <input type="number" id="numRooms" name="numRooms" required min="1">
+              <input type="number" id="numRooms" name="numRooms"  min="1">
               <br><br>
 
               <label for="city">City:</label>
-              <input type="text" id="city" name="city" required maxlength="20">
+              <input type="text" id="city" name="city"  maxlength="20">
               <br><br>
 
               <label for="starRating">Star Rating:</label>
-              <input type="number" id="starRating" name="starRating" required min="0" max="5">
+              <input type="number" id="starRating" name="starRating"  min="0" max="5">
               <br><br>
 
               <label for="hotelChainID">Hotel Chain ID:</label>
-              <input type="number" id="hotelChainID" name="hotelChainID" required min="1">
+              <input type="number" id="hotelChainID" name="hotelChainID"  min="1">
               <br><br>
 
               <label for="operation">Select Operation:</label>
-              <select id="operation" name="operation" onchange="updateFormForOperation()">
+              <select id="operation" name="operation">
                   <option value="insert">Insert New Hotel</option>
                   <option value="update">Update Existing Hotel</option>
                   <option value="delete">Delete Hotel</option>

@@ -36,17 +36,17 @@
 
         <br><br>
 
-        <label for="dollarAmount">Enter a dollar amount:</label>
+        <label for="dollarAmount">Cost At Most:</label>
         <input type="number" id="dollarAmount" name="dollarAmount" step="0.01" min="0">
 
         <br><br>
 
-        <label for="capacity">Enter capacity:</label>
+        <label for="capacity">Minimum capacity:</label>
         <input type="number" id="capacity" name="capacity" step="1" min="0">
 
         <br><br>
 
-        <label for="totalRooms">Enter total number of rooms:</label>
+        <label for="totalRooms">Minimum number of rooms:</label>
         <input type="number" id="totalRooms" name="totalRooms" step="1" min="0">
                 <br><br>
 

@@ -14,11 +14,11 @@ public class Query {
 
     public List<Room> searchAvailableRooms (String start, String end, String hotelRating, String area, String price, String capacity, String numRooms, String hotelChainID) {
 
-        String areaQuery = (area!="") ? " AND (h.city = '"+area+"') " : area;
-        String priceQuery  = (price!="") ? " AND (r.Price <= "+price+") " : price;
-        String capacityQuery  = (capacity!="") ? " AND (r.Capacity >= "+capacity+") " : capacity;
-        String numRoomsQuery  = (numRooms!="") ? " AND (h.NumRooms >= "+numRooms+") " : numRooms;
-        String hotelChainIDQuery  = (hotelChainID!="") ? " AND (h.hotelChainID = "+hotelChainID+") " : hotelChainID;
+        String areaQuery = (!area.isEmpty()) ? " AND (h.city = '"+area+"') " : area;
+        String priceQuery  = (!price.isEmpty()) ? " AND (r.Price <= "+price+") " : price;
+        String capacityQuery  = (!capacity.isEmpty()) ? " AND (r.Capacity >= "+capacity+") " : capacity;
+        String numRoomsQuery  = (!numRooms.isEmpty()) ? " AND (h.NumRooms >= "+numRooms+") " : numRooms;
+        String hotelChainIDQuery  = (!hotelChainID.isEmpty()) ? " AND (h.hotelChainID = "+hotelChainID+") " : hotelChainID;
 
 
         String sql = "SELECT * FROM (SELECT h.HotelAddr, r.RoomNum FROM Hotel h join Room r on h.HotelAddr = r.HotelAddr WHERE (h.starRating >= "+hotelRating+") "+hotelChainIDQuery+numRoomsQuery+areaQuery+capacityQuery+priceQuery+  " \n" +
@@ -172,16 +172,16 @@ public class Query {
     }
 
     public static boolean customerUpdate(String ID, String firstName, String middleName, String lastName, String address, String idType){
-        String firstNameQuery = (firstName!="") ? " FirstName = '"+firstName+"' " : firstName;
-        String middleNameQuery  = (middleName!="") ? " MiddleName = '"+middleName+"' " : middleName;
-        String lastNameQuery  = (lastName!="") ? " LastName = '"+lastName+"' " : lastName;
-        String addressQuery  = (address!="") ? " Address = '"+address+"' " : address;
-        String idTypeQuery  = (idType!="") ? " IDType = '"+idType+"' " : idType;
+        String firstNameQuery = (!firstName.isEmpty()) ? " FirstName = '"+firstName+"' " : firstName;
+        String middleNameQuery  = (!middleName.isEmpty()) ? " MiddleName = '"+middleName+"' " : middleName;
+        String lastNameQuery  = (!lastName.isEmpty()) ? " LastName = '"+lastName+"' " : lastName;
+        String addressQuery  = (!address.isEmpty()) ? " Address = '"+address+"' " : address;
+        String idTypeQuery  = (!idType.isEmpty()) ? " IDType = '"+idType+"' " : idType;
 
         String[] queryArray = {firstNameQuery,middleNameQuery,lastNameQuery,addressQuery,idTypeQuery};
         String tmp ="";
         for (String s :queryArray){
-            tmp += (s!="") ? s+", ":s;
+            tmp += (!s.isEmpty()) ? s+", ":s;
         }
         tmp=tmp.substring(0, tmp.length()-1);
         
@@ -228,6 +228,9 @@ public class Query {
     }
 
     public static boolean empInsert(String SIN, String firstName, String middleName, String lastName,String address, String role, String hotelAddr){
+        if(SIN.equals("") || firstName.equals("") || middleName.equals("") || lastName.equals("") || address.equals("") || role.equals("") || hotelAddr.equals("")){
+            return false;
+        }
         String sql = "INSERT INTO Employee VALUES("+SIN+",'"+firstName+"','"+middleName+"','"+lastName+"','"+address+"','"+role+"','"+hotelAddr+"'); \n";
         ConnectionDB con = new ConnectionDB();
 
@@ -249,17 +252,17 @@ public class Query {
 
 
     public static boolean empUpdate(String SIN, String firstName, String middleName, String lastName, String address, String jobTitle, String hotelAddr){
-        String firstNameQuery = (firstName!="") ? " FirstName = '"+firstName+"' " : firstName;
-        String middleNameQuery  = (middleName!="") ? " MiddleName = '"+middleName+"' " : middleName;
-        String lastNameQuery  = (lastName!="") ? " LastName = '"+lastName+"' " : lastName;
-        String addressQuery  = (address!="") ? " Address = '"+address+"' " : address;
-        String jobTitleQuery  = (jobTitle!="") ? " Role = '"+jobTitle+"' " : jobTitle;
-        String hotelAddrQuery  = (hotelAddr!="") ? " HotelAddr = '"+hotelAddr+"' " : hotelAddr;
+        String firstNameQuery = (!firstName.isEmpty()) ? " FirstName = '"+firstName+"' " : firstName;
+        String middleNameQuery  = (!middleName.isEmpty()) ? " MiddleName = '"+middleName+"' " : middleName;
+        String lastNameQuery  = (!lastName.isEmpty()) ? " LastName = '"+lastName+"' " : lastName;
+        String addressQuery  = (!address.isEmpty()) ? " Address = '"+address+"' " : address;
+        String jobTitleQuery  = (!jobTitle.isEmpty()) ? " Role = '"+jobTitle+"' " : jobTitle;
+        String hotelAddrQuery  = (!hotelAddr.isEmpty()) ? " HotelAddr = '"+hotelAddr+"' " : hotelAddr;
 
         String[] queryArray = {firstNameQuery,middleNameQuery,lastNameQuery,addressQuery,jobTitleQuery,hotelAddrQuery};
         String tmp ="";
         for (String s :queryArray){
-            tmp += (s!="") ? s+", ":s;
+            tmp += (!s.isEmpty()) ? s+", ":s;
         }
         tmp=tmp.substring(0, tmp.length()-1);
         
@@ -327,6 +330,11 @@ public class Query {
     }
 
     public static boolean hotelInsert(String hotelAddr, String city, String starRating, String hotelChainID){
+
+        if(hotelAddr.equals("") || city.equals("") || starRating.equals("") || hotelChainID.equals("")){
+            return false;
+        }
+
         String sql = "INSERT INTO Employee VALUES("+hotelAddr+", 0,'"+city+"','"+starRating+"','"+hotelChainID+"'); \n";
         ConnectionDB con = new ConnectionDB();
 
@@ -347,14 +355,14 @@ public class Query {
     }
 
     public static boolean hotelUpdate(String hotelAddr, String city, String starRating, String hotelChainID){
-        String cityQuery = (city!="") ? " City = '"+city+"' " : city;
-        String starRatingQuery  = (starRating!="") ? " StarRating  = '"+starRating+"' " : starRating;
-        String hotelChainIDQuery  = (hotelChainID!="") ? " HotelChainID  = '"+hotelChainID+"' " : hotelChainID;
+        String cityQuery = (!city.isEmpty()) ? " City = '"+city+"' " : city;
+        String starRatingQuery  = (!starRating.isEmpty()) ? " StarRating  = '"+starRating+"' " : starRating;
+        String hotelChainIDQuery  = (!hotelChainID.isEmpty()) ? " HotelChainID  = '"+hotelChainID+"' " : hotelChainID;
 
         String[] queryArray = {cityQuery,starRatingQuery,hotelChainIDQuery};
         String tmp ="";
         for (String s :queryArray){
-            tmp += (s!="") ? s+", ":s;
+            tmp += (!s.isEmpty()) ? s+", ":s;
         }
         tmp=tmp.substring(0, tmp.length()-1);
         
@@ -400,6 +408,11 @@ public class Query {
     }
 
     public static boolean roomInsert(String hotelAddr, String roomNum, String price, String capacity, String view, String extendable){
+
+        if(hotelAddr.equals("") || roomNum.equals("") || price.equals("") || capacity.equals("") || view.equals("") || extendable.equals("")){
+            return false;
+        }
+
         String sql = "INSERT INTO Employee VALUES("+hotelAddr+","+roomNum+","+price+","+capacity+",'"+view+"',"+extendable+"); \n";
         ConnectionDB con = new ConnectionDB();
 
@@ -420,15 +433,15 @@ public class Query {
     }
 
     public static boolean roomUpdate(String hotelAddr, String roomNum, String price, String capacity, String view, String extendable){
-        String priceQuery = (price!="") ? " Price = "+price+" " : price;
-        String capacityQuery  = (capacity!="") ? " Capacity  = "+capacity+" " : capacity;
-        String viewQuery  = (view!="") ? " View  = '"+view+"' " : view;
-        String extendableQuery  = (extendable!="") ? " Extendable  = "+extendable+" " : extendable;
+        String priceQuery = (!price.isEmpty()) ? " Price = "+price+" " : price;
+        String capacityQuery  = (!capacity.isEmpty()) ? " Capacity  = "+capacity+" " : capacity;
+        String viewQuery  = (!view.isEmpty()) ? " View  = '"+view+"' " : view;
+        String extendableQuery  = (!extendable.isEmpty()) ? " Extendable  = "+extendable+" " : extendable;
 
         String[] queryArray = {priceQuery,capacityQuery,viewQuery,extendableQuery};
         String tmp ="";
         for (String s :queryArray){
-            tmp += (s!="") ? s+", ":s;
+            tmp += (!s.isEmpty()) ? s+", ":s;
         }
         tmp=tmp.substring(0, tmp.length()-1);
         

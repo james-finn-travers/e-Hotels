@@ -24,27 +24,27 @@
         <h1> Customer Form</h1>
         <form id="employeeForm">
             <label for="id">ID:</label>
-            <input type="text" id="id" name="id">
+            <input type="text" id="id" name="id" required>
             <br><br>
 
             <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required maxlength="20">
+            <input type="text" id="firstName" name="firstName"  maxlength="20">
             <br><br>
 
             <label for="middleName">Middle Name:</label>
-            <input type="text" id="middleName" name="middleName" required maxlength="20">
+            <input type="text" id="middleName" name="middleName"  maxlength="20">
             <br><br>
 
             <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required maxlength="20">
+            <input type="text" id="lastName" name="lastName"  maxlength="20">
             <br><br>
 
             <label for="address">Address:</label>
-            <input type="text" id="address" name="address" required maxlength="20">
+            <input type="text" id="address" name="address" maxlength="20">
             <br><br>
 
             <label for="idType">Role:</label>
-            <input type="text" id="idType" name="idType" required maxlength="20">
+            <input type="text" id="idType" name="idType"  maxlength="20">
             <br><br>
 
 
