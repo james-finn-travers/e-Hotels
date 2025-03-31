@@ -278,4 +278,14 @@ EXECUTE PROCEDURE remove_room_function();
 
 CREATE INDEX idx_room_capacity ON Room(Capacity); -- can't increase/decrease size of room
 CREATE INDEX idx_room_view ON Room(View); -- can't change view of hotel room
-CREATE INDEX idx_hotel_city on Hotel(City) -- address will stay in same city
+CREATE INDEX idx_hotel_city on Hotel(City); -- address will stay in same city
+
+CREATE VIEW roomsPerArea AS
+SELECT City, SUM(RoomNum) as "Number of Rooms Available"
+FROM Hotel join Room on Hotel.HotelAddr=Room.HotelAddr
+GROUP BY City;
+
+CREATE VIEW totalCapacity AS
+SELECT HotelAddr, SUM(Capacity) as "Maximum Number of Guests"
+FROM Room
+GROUP BY HotelAddr;

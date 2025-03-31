@@ -53,6 +53,10 @@
 
          <% if (request.getMethod().equalsIgnoreCase("post") && request.getParameter("submit") != null && request.getParameter("custID")!=null) {
                 String custID = request.getParameter("custID");
+                  if (!Query.custExists(custID)){
+
+                                   response.sendRedirect("createCustomer.jsp");
+                                }
                 boolean isValid = true;
          %>
                 <p>Hotel Address: <%= hotelAddr %></p>

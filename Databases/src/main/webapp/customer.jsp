@@ -48,6 +48,10 @@
 
         <label for="totalRooms">Enter total number of rooms:</label>
         <input type="number" id="totalRooms" name="totalRooms" step="1" min="0">
+                <br><br>
+
+        <label for="hotelChain">Hotel Chain ID:</label>
+        <input type="number" id="hotelChain" name="hotelChain" step="1" min="1">
 
         <br><br>
 
@@ -65,6 +69,8 @@
         String dollarAmount = request.getParameter("dollarAmount");
         String capacity = request.getParameter("capacity");
         String totalRooms = request.getParameter("totalRooms");
+        String hotelChainID = request.getParameter("hotelChain");
+
 
         boolean isValid = true;
         String errorMessage = "";
@@ -95,7 +101,7 @@
         <p><strong>Capacity:</strong> <%= capacity %></p>
         <p><strong>Total Number of Rooms:</strong> <%= totalRooms %></p>
     <% Query q = new Query();
-        List<Room> rs = q.searchAvailableRooms(startDateStr, endDateStr, selectedNumber, enteredText, dollarAmount, capacity, totalRooms);
+        List<Room> rs = q.searchAvailableRooms(startDateStr, endDateStr, selectedNumber, enteredText, dollarAmount, capacity, totalRooms, hotelChainID);
                 if (!rs.isEmpty()) { %>
                     <h2>Available Rooms:</h2>
                     <table border="1">

@@ -11,17 +11,6 @@
 <body>
     <%
         String SIN = request.getParameter("SIN");
-
-        if (SIN != null) {
-
-         %>
-         <p> <%= SIN %> </p>
-             <%
-        } else {
-          %>
-                 <p> failed> </p>
-                     <%
-        }
     %>
     <form method="post">
             <label for="startDate" >Start Date:</label>
@@ -62,6 +51,10 @@
 
             <label for="totalRooms">Enter total number of rooms:</label>
             <input type="number" id="totalRooms" name="totalRooms" step="1" min="0">
+                        <br><br>
+
+             <label for="hotelChainID">Hotel Chain ID:</label>
+             <input type="number" id="hotelChainID" name="hotelChainID" step="1" min="1">
 
             <br><br>
             <button type="submit" name="submit">Submit</button>
@@ -78,6 +71,8 @@
             String dollarAmount = request.getParameter("dollarAmount");
             String capacity = request.getParameter("capacity");
             String totalRooms = request.getParameter("totalRooms");
+            String hotelChainID = request.getParameter("hotelChainID");
+
 
             boolean isValid = true;
             String errorMessage = "";
@@ -107,8 +102,10 @@
             <p><strong>Dollar Amount:</strong> $<%= dollarAmount %></p>
             <p><strong>Capacity:</strong> <%= capacity %></p>
             <p><strong>Total Number of Rooms:</strong> <%= totalRooms %></p>
+             <p><strong> Hotel Chain ID:</strong> <%= hotelChainID %></p>
+
         <% Query q = new Query();
-            List<Room> rs = q.searchAvailableRooms(startDateStr, endDateStr, selectedNumber, enteredText, dollarAmount, capacity, totalRooms);
+            List<Room> rs = q.searchAvailableRooms(startDateStr, endDateStr, selectedNumber, enteredText, dollarAmount, capacity, totalRooms, hotelChainID);
                     if (!rs.isEmpty()) { %>
                         <h2>Available Rooms:</h2>
                         <table border="1">

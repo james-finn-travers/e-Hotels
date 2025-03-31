@@ -12,9 +12,16 @@ import java.text.NumberFormat;
 
 public class Query {
 
-    public List<Room> searchAvailableRooms (String start, String end, String hotelRating, String area, String price, String capacity, String numRooms) {
+    public List<Room> searchAvailableRooms (String start, String end, String hotelRating, String area, String price, String capacity, String numRooms, String hotelChainID) {
 
-        String sql = "SELECT * FROM (SELECT h.HotelAddr, r.RoomNum FROM Hotel h join Room r on h.HotelAddr = r.HotelAddr WHERE (h.NumRooms >= "+numRooms+") AND (h.starRating >= "+hotelRating+") AND (h.city = '"+area+"') AND (r.Capacity >= "+capacity+") AND (r.Price >= "+price+") \n" +
+        String areaQuery = (area!="") ? " AND (h.city = '"+area+"') " : area;
+        String priceQuery  = (price!="") ? " AND (r.Price <= "+price+") " : price;
+        String capacityQuery  = (capacity!="") ? " AND (r.Capacity >= "+capacity+") " : capacity;
+        String numRoomsQuery  = (numRooms!="") ? " AND (h.NumRooms >= "+numRooms+") " : numRooms;
+        String hotelChainIDQuery  = (hotelChainID!="") ? " AND (h.hotelChainID = "+hotelChainID+") " : hotelChainID;
+
+
+        String sql = "SELECT * FROM (SELECT h.HotelAddr, r.RoomNum FROM Hotel h join Room r on h.HotelAddr = r.HotelAddr WHERE (h.starRating >= "+hotelRating+") "+hotelChainIDQuery+numRoomsQuery+areaQuery+capacityQuery+priceQuery+  " \n" +
                 "EXCEPT\n" +
                 "SELECT * FROM (SELECT HotelAddr, RoomNum FROM Booking WHERE ((CheckInDate <= '"+end+"') AND (CheckInDate >= '"+start+"')) OR (CheckOutDate >= '"+start+"' AND CheckOutDate <= '"+end+"')\n" +
                 "UNION\n" +
@@ -133,20 +140,39 @@ public class Query {
             st.executeUpdate("SET search_path = 'e-Hotel';");
 
             ResultSet rs = st.executeQuery(sql);
-
-            ResultSetMetaData rsm = rs.getMetaData();
-
-            int colCount = rsm.getColumnCount();
-
+            boolean exists= rs.next();
             st.close();
             con.close();
-            return colCount==1;
+            return exists;
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
         }
     }
+
+    public static boolean custExists(String ID){
+        String sql = "SElECT ID FROM Customer \n" +
+                "WHERE ID = '"+ID+"'; \n";
+        ConnectionDB con = new ConnectionDB();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+
+            ResultSet rs = st.executeQuery(sql);
+            boolean exists= rs.next();
+            st.close();
+            con.close();
+            return exists;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
 
     public static ArrayList<Booking> getCustomerBooking(String custID){
 
@@ -319,8 +345,28 @@ public class Query {
         }
     }
 
+    public static boolean createCustomer(String ID, String firstName,String middleName, String lastName, String address,String idType){
+        LocalDate currentDate = LocalDate.now();
+        String dateReg = currentDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String sql = "INSERT INTO Customer \n" +
+                "VALUES ('"+ID+"', '"+firstName+"','"+middleName+"','"+lastName+"','"+address+"','"+idType+"' ,'"+dateReg+"'); \n";
+        ConnectionDB con = new ConnectionDB();
 
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            st.executeUpdate(sql);
 
+            st.close();
+            con.close();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
     public static boolean makePayment(String hotelAddr, String roomNum, String checkInDate, String custID, String paymentAmount){
         LocalDate currentDate = LocalDate.now();
         String paymentDate = currentDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -342,6 +388,162 @@ public class Query {
             System.out.println(e.getMessage());
             return false;
         }
+    }
+
+    public static ArrayList<String> roomsPerArea(){
+        String sql = "SELECT * FROM RoomsPerArea;\n";
+
+        ConnectionDB con = new ConnectionDB();
+
+        ArrayList<String> hotels = new ArrayList<>();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            ResultSet rs = st.executeQuery(sql);
+
+            ResultSetMetaData rsm = rs.getMetaData();
+
+            int colCount = rsm.getColumnCount();
+
+            while (rs.next()){
+                String tmp;
+                tmp = "<tr>"
+                        + "<td>" + rs.getString("City")
+                        + "</td>"
+                        + "<td>" + rs.getString("Number of Rooms Available")
+                        + "</td>"
+                        + "</tr>";
+                hotels.add(tmp);
+            }
+            rs.close();
+            st.close();
+            con.close();
+
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return hotels;
+    }
+
+    public static ArrayList<String> roomsPerArea(String city){
+        String sql = "SELECT * FROM RoomsPerArea WHERE City = '" +city+ "'\n";
+
+        ConnectionDB con = new ConnectionDB();
+
+        ArrayList<String> hotels = new ArrayList<>();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            ResultSet rs = st.executeQuery(sql);
+
+            ResultSetMetaData rsm = rs.getMetaData();
+
+            int colCount = rsm.getColumnCount();
+
+            while (rs.next()){
+                String tmp;
+                tmp = "<tr>"
+                        + "<td>" + rs.getString("City")
+                        + "</td>"
+                        + "<td>" + rs.getString("Number of Rooms Available")
+                        + "</td>"
+                        + "</tr>";
+                hotels.add(tmp);
+            }
+            rs.close();
+            st.close();
+            con.close();
+
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return hotels;
+    }
+
+    public static ArrayList<String> getHotelCap(String hotelAddr){
+        String sql = "SELECT * FROM TotalCapacity WHERE HotelAddr = '" +hotelAddr+ "'\n";
+
+        ConnectionDB con = new ConnectionDB();
+
+        ArrayList<String> hotels = new ArrayList<>();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            ResultSet rs = st.executeQuery(sql);
+
+            ResultSetMetaData rsm = rs.getMetaData();
+
+            int colCount = rsm.getColumnCount();
+
+            while (rs.next()){
+                String tmp;
+                tmp = "<tr>"
+                        + "<td>" + rs.getString("HotelAddr")
+                        + "</td>"
+                        + "<td>" + rs.getString("Maximum Number of Guests")
+                        + "</td>"
+                        + "</tr>";
+                hotels.add(tmp);
+            }
+            rs.close();
+            st.close();
+            con.close();
+
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return hotels;
+    }
+
+    public static ArrayList<String> getHotelCap(){
+        String sql = "SELECT * FROM TotalCapacity;\n";
+
+        ConnectionDB con = new ConnectionDB();
+
+        ArrayList<String> hotels = new ArrayList<>();
+
+        try {
+            Connection db = con.getConnection();
+            Statement st = db.createStatement();
+            st.executeUpdate("SET search_path = 'e-Hotel';");
+            ResultSet rs = st.executeQuery(sql);
+
+            ResultSetMetaData rsm = rs.getMetaData();
+
+            int colCount = rsm.getColumnCount();
+
+            while (rs.next()){
+                String tmp;
+                tmp = "<tr>"
+                        + "<td>" + rs.getString("HotelAddr")
+                        + "</td>"
+                        + "<td>" + rs.getString("Maximum Number of Guests")
+                        + "</td>"
+                        + "</tr>";
+                hotels.add(tmp);
+            }
+            rs.close();
+            st.close();
+            con.close();
+
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return hotels;
     }
 
     public static void main(String[] args){

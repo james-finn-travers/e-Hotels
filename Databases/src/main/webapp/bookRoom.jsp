@@ -49,6 +49,12 @@
 
          <% if (request.getMethod().equalsIgnoreCase("post") && request.getParameter("submit") != null && request.getParameter("custID")!=null) {
                 String custID = request.getParameter("custID");
+
+                if (!Query.custExists(custID)){
+
+                   response.sendRedirect("createCustomer.jsp");
+                }
+
                 boolean isValid = true;
                 Query q = new Query();
          %>
@@ -58,6 +64,7 @@
                 <p>Customer ID: <%= custID %></p>
                 <p>Check-Out Date: <%= checkOut %></p>
          <%
+
                 boolean flag = q.createBooking(hotelAddr,roomNum,checkIn, custID,checkOut);
 
                 if (flag) {

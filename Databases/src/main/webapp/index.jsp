@@ -16,10 +16,16 @@
                <option value="Employee">Employee</option>
            </select>
            <br><br>
-           <button type="submit">Submit</button>
-       </form>
+           <button name="submit" type="submit">Submit</button>
+   </form>
 
-<% if (request.getMethod().equalsIgnoreCase("post") && request.getParameter("userType")!=null) {
+   <form action="" method="POST">
+      <button type="submit" name = "area">Rooms Per Area</button>
+      <br><br>
+      <button type="submit" name = "cap">Capacity Per Hotel</button>
+   </form>
+
+<% if (request.getMethod().equalsIgnoreCase("post") && request.getParameter("userType")!=null && request.getParameter("submit")!= null) {
      String userType = request.getParameter("userType");
 
       if ("Customer".equals(userType)) {
@@ -31,6 +37,24 @@
       }
 
 
+
+}
+
+
+if (request.getMethod().equalsIgnoreCase("post") && request.getParameter("area")!=null) {
+
+     response.sendRedirect("roomsPerArea.jsp");
+
+
+
+
+}
+
+
+
+
+if (request.getMethod().equalsIgnoreCase("post") && request.getParameter("cap")!=null) {
+                            response.sendRedirect("capacityPerHotel.jsp");
 
 }
 
