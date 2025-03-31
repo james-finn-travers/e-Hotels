@@ -276,9 +276,9 @@ FOR EACH ROW
 EXECUTE PROCEDURE remove_room_function();
 
 
-CREATE INDEX idx_room_capacity ON Room(Capacity); -- can't increase/decrease size of room
-CREATE INDEX idx_room_view ON Room(View); -- can't change view of hotel room
-CREATE INDEX idx_hotel_city on Hotel(City); -- address will stay in same city
+CREATE INDEX idx_room_capacity ON Room(Capacity); -- It is not possible to adjust the capacity of a hotel room. In addition, due to there being a wide range of capacity options (ranging from 1 to 5 guests), indexing can decrease query time by up to 80%.
+CREATE INDEX idx_room_view ON Room(View); -- It is not possible to change the view of a hotel room, as it would always face the same direction. In addition, as there are 3 options for views (mountain, sea, none), this index could reduce query time by up to 67%.
+CREATE INDEX idx_hotel_city on Hotel(City); -- The hotel cannot change cities without changing addresses (which is also impossible). In addition, there are 4 different cities in the populated database (Ottawa, Kanata, Toronto, Hamliton), this index could reduce query time by up to 75%.
 
 CREATE VIEW roomsPerArea AS
 SELECT City, SUM(RoomNum) as "Number of Rooms Available"
