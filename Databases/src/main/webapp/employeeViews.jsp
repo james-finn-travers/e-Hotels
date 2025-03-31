@@ -21,6 +21,13 @@ if (request.getMethod().equalsIgnoreCase("post") && request.getParameter("SIN")!
                <option value="Renting">Renting</option>
                <option value="Booking to Renting"> Booking to Renting</option>
                <option value="Payment">Payment</option>
+               <option value="Customers">Manage Customers</option>
+               <option value="Rooms">Manage Rooms</option>
+               <option value="Hotels">Manage Hotels</option>
+               <option value="Employees">Manage Employees</option>
+
+
+
 
            </select>
 
@@ -40,6 +47,18 @@ if (request.getMethod().equalsIgnoreCase("post") && request.getParameter("SIN")!
              }
              else if ("Payment".equals(views)){
                  response.sendRedirect("payment.jsp?SIN="+SIN);
+             }
+             else if ("Customers".equals(views)){
+                              response.sendRedirect("manageCustomer.jsp?SIN="+SIN);
+             }
+             else if ("Rooms".equals(views)){
+                  response.sendRedirect("manageRoom.jsp?SIN="+SIN);
+             }
+             else if ("Hotels".equals(views)){
+                  response.sendRedirect("manageHotel.jsp?SIN="+SIN);
+             }
+             else if ("Employees".equals(views)){
+                  response.sendRedirect("manageEmployee.jsp?SIN="+SIN);
              }
              else {
                  response.sendRedirect("index.jsp"); // Default redirection
