@@ -70,12 +70,13 @@
               </select>
               <br><br>
 
-              <button type="submit" id="submitButton">Register Room</button>
+              <button type="submit" id="submitButton" name = "submitButton"> Submit </button>
           </form>
 
 
                  <%
                   if (request.getMethod().equalsIgnoreCase("post") && request.getParameter("submitButton") != null) {
+
                                 String hotelAddr = request.getParameter("hotelAddr");
                                 String roomNum = request.getParameter("roomNum");
                                 String price = request.getParameter("price");

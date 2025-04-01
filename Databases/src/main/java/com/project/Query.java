@@ -183,10 +183,10 @@ public class Query {
         for (String s :queryArray){
             tmp += (!s.isEmpty()) ? s+", ":s;
         }
-        tmp=tmp.substring(0, tmp.length()-1);
-        
+        tmp=tmp.substring(0, tmp.length()-2);
+
         String sql = "UPDATE Customer \n" +
-                "SET "+tmp+"' \n" +
+                "SET "+tmp+" \n" +
                 "WHERE ID = '"+ID+"'; \n";
         ConnectionDB con = new ConnectionDB();
 
@@ -205,6 +205,7 @@ public class Query {
             return false;
         }
     }
+
 
 
     public static boolean empDelete(String SIN){
@@ -264,11 +265,12 @@ public class Query {
         for (String s :queryArray){
             tmp += (!s.isEmpty()) ? s+", ":s;
         }
-        tmp=tmp.substring(0, tmp.length()-1);
+        tmp=tmp.substring(0, tmp.length()-2);
         
         String sql = "UPDATE Employee \n" +
                 "SET "+tmp+" \n" +
                 "WHERE SINOrSSN = '"+SIN+"'; \n";
+
         ConnectionDB con = new ConnectionDB();
 
         try {
@@ -335,7 +337,7 @@ public class Query {
             return false;
         }
 
-        String sql = "INSERT INTO Employee VALUES("+hotelAddr+", 0,'"+city+"','"+starRating+"','"+hotelChainID+"'); \n";
+        String sql = "INSERT INTO Hotel VALUES('"+hotelAddr+"', 0,'"+city+"','"+starRating+"','"+hotelChainID+"'); \n";
         ConnectionDB con = new ConnectionDB();
 
         try {
@@ -364,7 +366,7 @@ public class Query {
         for (String s :queryArray){
             tmp += (!s.isEmpty()) ? s+", ":s;
         }
-        tmp=tmp.substring(0, tmp.length()-1);
+        tmp=tmp.substring(0, tmp.length()-2);
         
         String sql = "UPDATE Hotel \n" +
                 "SET "+tmp+" \n" +
@@ -413,7 +415,7 @@ public class Query {
             return false;
         }
 
-        String sql = "INSERT INTO Employee VALUES("+hotelAddr+","+roomNum+","+price+","+capacity+",'"+view+"',"+extendable+"); \n";
+        String sql = "INSERT INTO Room VALUES('"+hotelAddr+"',"+roomNum+","+price+","+capacity+",'"+view+"',"+extendable+"); \n";
         ConnectionDB con = new ConnectionDB();
 
         try {
@@ -443,7 +445,7 @@ public class Query {
         for (String s :queryArray){
             tmp += (!s.isEmpty()) ? s+", ":s;
         }
-        tmp=tmp.substring(0, tmp.length()-1);
+        tmp=tmp.substring(0, tmp.length()-2);
         
         String sql = "UPDATE Room \n" +
                 "SET "+tmp+" \n" +

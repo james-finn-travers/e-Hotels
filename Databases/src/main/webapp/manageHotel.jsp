@@ -27,16 +27,12 @@
               <input type="text" id="hotelAddr" name="hotelAddr" required maxlength="20">
               <br><br>
 
-              <label for="numRooms">Number of Rooms:</label>
-              <input type="number" id="numRooms" name="numRooms"  min="1">
-              <br><br>
-
               <label for="city">City:</label>
               <input type="text" id="city" name="city"  maxlength="20">
               <br><br>
 
               <label for="starRating">Star Rating:</label>
-              <input type="number" id="starRating" name="starRating"  min="0" max="5">
+              <input type="number" id="starRating" name="starRating"  min="1" max="5">
               <br><br>
 
               <label for="hotelChainID">Hotel Chain ID:</label>
@@ -51,14 +47,13 @@
               </select>
               <br><br>
 
-              <button type="submit" id="submitButton">Register Hotel</button>
+              <button type="submit" id="submitButton" name = "submitButton">submit</button>
           </form>
 
 
                  <%
                   if (request.getMethod().equalsIgnoreCase("post") && request.getParameter("submitButton") != null) {
                                 String hotelAddr = request.getParameter("hotelAddr");
-                                String numRooms = request.getParameter("numRooms");
                                 String city = request.getParameter("city");
                                 String starRating = request.getParameter("starRating");
                                 String hotelChainID = request.getParameter("hotelChainID");
@@ -78,7 +73,7 @@
                                                            }
                                 }
                                 else if(operation.equals("delete")){
-                                    boolean flag1 = Query.hotelDelete(hotelChainID);
+                                    boolean flag1 = Query.hotelDelete(hotelAddr);
                                     if(flag1){
                                                            %>
                                                            <p> Success! Hotel Deleted</p>

@@ -43,7 +43,7 @@
             <input type="text" id="address" name="address" maxlength="20">
             <br><br>
 
-            <label for="idType">Role:</label>
+            <label for="idType">ID type:</label>
             <input type="text" id="idType" name="idType"  maxlength="20">
             <br><br>
 
@@ -51,8 +51,8 @@
 
             <label for="operation">Select Operation:</label>
             <select id="operation" name="operation">
-                <option value="update">Update Existing Employee</option>
-                <option value="delete">Delete Employee</option>
+                <option value="update">Update Existing Customer</option>
+                <option value="delete">Delete Customer</option>
             </select>
             <br><br>
 

@@ -23,7 +23,7 @@
 
             <br><br>
 
-            <label for="numberPicker">Select a number (1-5):</label>
+            <label for="numberPicker">Star Rating (1-5):</label>
             <select id="numberPicker" name="numberPicker">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -39,17 +39,17 @@
 
             <br><br>
 
-            <label for="dollarAmount">Enter a dollar amount:</label>
+            <label for="dollarAmount">Max Cost:</label>
             <input type="number" id="dollarAmount" name="dollarAmount" step="0.01" min="0">
 
             <br><br>
 
-            <label for="capacity">Enter capacity:</label>
+            <label for="capacity">Min Capacity:</label>
             <input type="number" id="capacity" name="capacity" step="1" min="0">
 
             <br><br>
 
-            <label for="totalRooms">Enter total number of rooms:</label>
+            <label for="totalRooms">Min number of rooms:</label>
             <input type="number" id="totalRooms" name="totalRooms" step="1" min="0">
                         <br><br>
 
